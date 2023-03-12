@@ -1,0 +1,19 @@
+#TopRack {
+    text-align:right;
+}
+#TopRack * {
+    margin-right:10px;
+    margin-bottom:7px;
+}
+
+.post {
+    border:1px solid black;
+    margin:10px;
+    padding:3px;
+}
+
+#CreatePost textarea {
+    margin:10px;
+    height:5cm;
+    width:70%;
+}
