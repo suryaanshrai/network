@@ -23,12 +23,8 @@ function AllPosts(props) {
     .then(response => response.json())
     .then(data => {
       console.log(data, 'posted');
-      setState({
-        ...state,
-        data:data
-      });
+      
     });
-    console.log(state.data, 'dont take shit');
     return(
       <div>Shit yaar!</div>
     )
