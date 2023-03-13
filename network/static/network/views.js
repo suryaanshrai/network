@@ -71,6 +71,7 @@ function getAllPosts() {
         });
     });
 }
+
 function loadPage(pageName) {
     document.querySelectorAll('.pages').forEach((page)=> {
         page.style.display = 'none';
