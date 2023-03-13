@@ -16,8 +16,7 @@ function loadPage(pageName) {
 function AllPosts(props) {
     loadPage('AllPosts2');
 
-    fetch('getAllPosts')
-    .then(response => response.json())
+    fetch('/getAllPosts')
     .then(data => {
         var allPosts = data;
     });
