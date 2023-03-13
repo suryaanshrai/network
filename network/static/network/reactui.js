@@ -1,4 +1,4 @@
-function CreatePost(props){
+function CreatePost(props) {
     return (
         <div class="post">
             {props.username} posted {props.content} at {props.time}
@@ -6,15 +6,6 @@ function CreatePost(props){
     );
 }
 
-function AllPosts() {
-    fetch("getAllPosts")
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        let solution=document.createElement('div');
-    });
-    return (
-        <div></div>
-    );
+function AllPosts(props) {
+    
 }
-
