@@ -22,6 +22,7 @@ function AllPosts(props) {
         const [allPosts, setAllPosts] = React.useState({
             'allposts':data
         });
+        console.log('i reached here');
     });
     return (
             <p>{allPosts.allposts}</p>
