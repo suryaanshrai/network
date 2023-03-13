@@ -20,10 +20,7 @@ function AllPosts(props) {
     .then(response => response.json())
     .then(data => {
       console.log(data, 'posted');
-      const [state, setState] = React.useState({
-        data: 'apple'
-      });
-      console.log(state.data, 'from state');
+      
     });
     return(
       <div>Shit yaar!</div>
