@@ -25,7 +25,7 @@ function AllPosts(props) {
         console.log('i reached here');
     });
     return (
-            <p>{allPosts.allposts}</p>
+            <p></p>
     )
 }
 
