@@ -16,12 +16,19 @@ function loadPage(pageName) {
 function AllPosts(props) {
 
     loadPage('AllPosts2');
+    const [state, setState] = React.useState({
+      data: {}
+    });
     fetch('getAllPosts')
     .then(response => response.json())
     .then(data => {
       console.log(data, 'posted');
-      
+      setState({
+        ...state,
+        data:data
+      });
     });
+    console.log(state.data, 'dont take shit');
     return(
       <div>Shit yaar!</div>
     )
