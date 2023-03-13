@@ -21,15 +21,10 @@ function AllPosts(props) {
     .then(response => response.json())
     .then(data => {
         allPosts.push('three');
-    }).
+    })
     .then(
-    //console.log(allPosts, 'posted through react');
-    return (
-        <div>
-            <p>Loading React...</p>
-                {allPosts}
-        </div>
-    ););
+        return 
+    )
 }
 
 ReactDOM.render(<AllPosts />, document.querySelector('#AllPosts2'));
