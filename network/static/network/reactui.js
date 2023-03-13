@@ -21,7 +21,7 @@ function AllPosts(props) {
     .then(data => {
       console.log(data, 'posted');
       const [state, setState] = React.useState({
-        data: data
+        data: 'apple'
       });
       console.log(state.data, 'from state');
     });
