@@ -16,14 +16,15 @@ function loadPage(pageName) {
 function AllPosts(props) {
     loadPage('AllPosts2');
 
-    var allPosts=['one', 'two'];
     fetch('/getAllPosts')
     .then(response => response.json())
     .then(data => {
-        allPosts.push('three');
-    })
-    .then(
-        return 
+        const [allPosts, setAllPosts] = React.useState({
+            'allposts':data
+        });
+    });
+    return (
+            <p>{allPosts.allposts}</p>
     )
 }
 
