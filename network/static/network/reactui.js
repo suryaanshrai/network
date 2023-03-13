@@ -16,17 +16,18 @@ function loadPage(pageName) {
 function AllPosts(props) {
     loadPage('AllPosts2');
 
+    var allPosts = {'apple':'banana'};
     fetch('/getAllPosts')
     .then(response => response.json())
     .then(data => {
-        var allPosts = data;
-        console.log(data, 'posted');
+        allPosts = data;
+        console.log(allPosts, 'posted');
     });
     //console.log(allPosts, 'posted through react');
     return (
         <div>
             <p>Loading React...</p>
-            {this.state.allPosts}
+            {JSON.stringify(allPosts)}
         </div>
     );
 }
