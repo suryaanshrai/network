@@ -26,7 +26,7 @@ function AllPosts(props) {
     return (
         <div>
             <p>Loading React...</p>
-            {}
+            {this.state.allPosts}
         </div>
     );
 }
