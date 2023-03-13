@@ -16,22 +16,18 @@ function loadPage(pageName) {
 function AllPosts(props) {
 
     loadPage('AllPosts2');
-    const [count, setCount] = React.useState(0);
-
-  // Similar to componentDidMount and componentDidUpdate:
-  React.useEffect(() => {
-    // Update the document title using the browser API
-    document.title = `You clicked ${count} times`;
-  });
-
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-    </div>
-  );
+    fetch('getAllPosts')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data, 'posted');
+      const [state, setState] = React.useState({
+        data: data
+      });
+      console.log(state.data, 'from state');
+    });
+    return(
+      <div>Shit yaar!</div>
+    )
 }
 
 ReactDOM.render(<AllPosts />, document.querySelector('#AllPosts2'));
