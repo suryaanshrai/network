@@ -17,12 +17,17 @@ function AllPosts(props) {
     loadPage('AllPosts2');
 
     fetch('/getAllPosts')
+    .then(response => response.json())
     .then(data => {
         var allPosts = data;
+        console.log(data, 'posted');
     });
-    console.log(allPosts, 'posted through react');
+    //console.log(allPosts, 'posted through react');
     return (
-        <p>Loading React</p>
+        <div>
+            <p>Loading React...</p>
+            {}
+        </div>
     );
 }
 
