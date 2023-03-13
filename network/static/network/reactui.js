@@ -15,9 +15,16 @@ function loadPage(pageName) {
 
 function AllPosts(props) {
     loadPage('AllPosts2');
+
+    fetch('getAllPosts')
+    .then(response => response.json())
+    .then(data => {
+        var allPosts = data;
+    });
+    console.log(allPosts, 'posted through react');
     return (
-        <div>Loading React...</div>
-    )
+        <p>Loading React</p>
+    );
 }
 
 ReactDOM.render(<AllPosts />, document.querySelector('#AllPosts2'));
