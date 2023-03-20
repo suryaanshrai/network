@@ -106,7 +106,12 @@ def like_post(request, postid):
 
 def userpage(request, username):
     user = User.objects.get(username=username)
-    posts = Posts.objects.get(poster=user)
+    posts = Posts.objects.filter(poster=user).values
     follower = 0
     following = 0
-    return render(request, "network/userpage.html")
+    return render(request, "network/userpage.html", {
+        "username":username,
+        "posts":posts,
+        "followers":follower,
+        "following": following
+    })
