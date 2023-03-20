@@ -23,11 +23,12 @@ function AllPosts(props) {
     .then(response => response.json())
     .then(data => {
       console.log(data, 'posted');
-      
+      setState({
+        data: data
+      })
     });
     return(
-      <div>Shit yaar!</div>
+      <div>{JSON.stringify(state.data)}</div>
     )
 }
 
-ReactDOM.render(<AllPosts />, document.querySelector('#AllPosts2'));
