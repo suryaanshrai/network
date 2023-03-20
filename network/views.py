@@ -109,3 +109,4 @@ def userpage(request, username):
     posts = Posts.objects.get(poster=user)
     follower = 0
     following = 0
+    return render(request, "network/userpage.html")
