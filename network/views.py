@@ -103,3 +103,9 @@ def like_post(request, postid):
             new_like.delete()
             return HttpResponse('Unliked')
     return HttpResponse('Invalid Request')
+
+def userpage(request, username):
+    user = User.objects.get(username=username)
+    posts = Posts.objects.get(poster=user)
+    follower = 0
+    following = 0
