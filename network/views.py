@@ -119,13 +119,17 @@ def userpage(request, username):
     allposts.reverse()
     follower = len(user.followers.all())
     following = len(user.following.all())
-    if Follower.objects.get(follower=)
+    try:
+        Follower.objects.get(follower=User.objects.get(username=request.user.username), following=User.objects.get(username=username))
+        follow_status = True
+    except:
+        follow_status = False
     return render(request, "network/userpage.html", {
         "username":username,
         "posts":allposts,
         "followers":follower,
         "following": following,
-        "follow_status":
+        "follow_status":follow_status
     })
 
 

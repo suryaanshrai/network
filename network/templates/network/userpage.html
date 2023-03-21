@@ -9,7 +9,7 @@
         {% if user.is_authenticated and user.username != username %}
         <form action="{% url 'follow' username %}">
             {% csrf_token %}
-            <button class="btn btn-primary btn-sm" type="submit">Follow</button>
+            <button class="btn btn-primary btn-sm" type="submit">{% if follow_status %} Unfollow {% else %} Follow {% endif %}</button>
         </form>
         {% endif %}
     </div>
