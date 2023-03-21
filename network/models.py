@@ -20,3 +20,6 @@ class Like(models.Model):
 
     def __str__(self):
         return f"{self.user} liked {self.post} at {self.time}"
+
+class Follower(models.Model):
+    follower
