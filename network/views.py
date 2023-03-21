@@ -119,22 +119,24 @@ def userpage(request, username):
     allposts.reverse()
     follower = len(user.followers.all())
     following = len(user.following.all())
+    if Follower.objects.get(follower=)
     return render(request, "network/userpage.html", {
         "username":username,
         "posts":allposts,
         "followers":follower,
-        "following": following
+        "following": following,
+        "follow_status":
     })
 
 
 @login_required
 def follow(request, tofollow):
-    if not user.is_authenticated:
+    if not request.user.is_authenticated:
         return HttpResponse('Login Required')
-    if len(Follower.objects.get(follower=User.get(username=request.user.username), following=User.get(username=tofollow))) != 0:
-        new_follow = Follower(follower=User.get(username=request.user.username), following=User.get(username=tofollow))
+    if len(Follower.objects.filter(follower=User.objects.get(username=request.user.username), following=User.objects.get(username=tofollow))) == 0:
+        new_follow = Follower(follower=User.objects.get(username=request.user.username), following=User.objects.get(username=tofollow))
         new_follow.save()
         return HttpResponse('Followed Successfully')
-    old_follow=Follower.objects.get(follower=User.get(username=request.user.username), following=User.get(username=tofollow))
+    old_follow=Follower.objects.get(follower=User.objects.get(username=request.user.username), following=User.objects.get(username=tofollow))
     old_follow.delete()
     return HttpResponse('Unfollowed Successfully')
