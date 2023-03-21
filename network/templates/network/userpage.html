@@ -15,7 +15,8 @@
             <p>{{post.content}} </p>
             Likes: {{post.likecount}}
             {% if user.is_authenticated %}
-            <form>
+            <form action="{% url 'likePost' post.id %}" method="post">
+                {% csrf_token %}
                 <button class="btn btn-primary btn-sm" type="submit">Like</button>
                 <input type="hidden" name="id" value="{{post.id}}">
             </form>
