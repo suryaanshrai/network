@@ -8,7 +8,7 @@ class User(AbstractUser):
 class Posts(models.Model):
     poster = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
     content = models.TextField(max_length=256)
-    time = models.TimeField(default=datetime.now())
+    time = models.DateTimeField(default=datetime.now())
 
     def __str__(self):
         return f"{self.poster} posted \"{self.content}\" at {self.time}"
@@ -21,7 +21,7 @@ class Like(models.Model):
 
     def __str__(self):
         return f"{self.user} liked {self.post} at {self.time}"
-    
+
 
 class Follower(models.Model):
     follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name="following")
