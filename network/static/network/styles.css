@@ -30,15 +30,15 @@
     }
 }
 
-@keyframes enterFromTop {
+@keyframes enterFromBottom {
     0% {
         opacity: 0;
-        margin-bottom: cm;
+        margin-top: 2cm;
     }
 
     100% {
         opacity: 1;
-        margin-bottom: 0;
+        margin-top: 0;
     }
 }
 
@@ -53,5 +53,6 @@
 
 
 .navbar {
-
+    animation-name: enterFromBottom;
+    animation-duration: 3s;
 }
