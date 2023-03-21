@@ -129,4 +129,6 @@ def userpage(request, username):
 
 @login_required
 def follow(request, tofollow):
+    if not user.is_authenticated:
+        return HttpResponse('Login Required')
     
