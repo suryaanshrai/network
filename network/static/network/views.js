@@ -85,6 +85,3 @@ allPosts.addEventListener('click', () => {
     loadPage('AllPosts');
     return false;
 });
-
-newPostButton = document.querySelector("#newPostButton");
-newPostButton.addEventListener('click',()=>loadPage("CreatePost"));
