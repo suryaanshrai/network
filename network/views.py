@@ -140,7 +140,7 @@ def follow(request, tofollow):
     if len(Follower.objects.filter(follower=User.objects.get(username=request.user.username), following=User.objects.get(username=tofollow))) == 0:
         new_follow = Follower(follower=User.objects.get(username=request.user.username), following=User.objects.get(username=tofollow))
         new_follow.save()
-        return HttpResponseRedirect(reverse('user/', [tofollow,]))
+        return HttpResponseRedirect(reverse('userpage', args=(tofollow,)))
     old_follow=Follower.objects.get(follower=User.objects.get(username=request.user.username), following=User.objects.get(username=tofollow))
     old_follow.delete()
-    return HttpResponseRedirect(reverse('user/', [tofollow,]))
+    return HttpResponseRedirect(reverse('userpage', args=(tofollow,)))
