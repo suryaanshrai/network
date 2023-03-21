@@ -144,3 +144,8 @@ def follow(request, tofollow):
     old_follow=Follower.objects.get(follower=User.objects.get(username=request.user.username), following=User.objects.get(username=tofollow))
     old_follow.delete()
     return HttpResponseRedirect(reverse('userpage', args=(tofollow,)))
+
+@login_required
+def following_posts(request):
+    for user in User.objects.get(id=2).following.all():
+        user.following.posts.all()
