@@ -27,7 +27,7 @@ function toggle(button){
     }
 }
 function getAllPosts() {
-    fetch("getAllPosts")
+    fetch("/getAllPosts")
     .then(response => response.json())
     .then(data => {
         console.log(data);
