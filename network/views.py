@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
-from .models import User, Posts, Like
+from .models import User, Posts, Like, Follower
 
 
 def index(request):
@@ -131,4 +131,10 @@ def userpage(request, username):
 def follow(request, tofollow):
     if not user.is_authenticated:
         return HttpResponse('Login Required')
-    
+    if len(Follower.objects.get(follower=User.get(username=request.user.username), following=User.get(username=tofollow))) != 0:
+        new_follow = Follower(follower=User.get(username=request.user.username), following=User.get(username=tofollow))
+        new_follow.save()
+        return HttpResponse('Followed Successfully')
+    old_follow=Follower.objects.get(follower=User.get(username=request.user.username), following=User.get(username=tofollow))
+    old_follow.delete()
+    return HttpResponse('Unfollowed Successfully')

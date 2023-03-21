@@ -10,6 +10,7 @@ urlpatterns = [
     path("register", views.register, name="register"),
     path("createpost", views.createpost, name="createpost"),
     path("getAllPosts", views.getAllPosts, name="getAllPosts"),
-    path("likePost/<int:postid>", views.like_post, name="likePost"), 
-    path("user/<str:username>", views.userpage, name="userpage")
+    path("likePost/<int:postid>", views.like_post, name="likePost"),
+    path("user/<str:username>", views.userpage, name="userpage"),
+    path("follow/<str:tofollow>", views.follow, name="follow")
 ]
