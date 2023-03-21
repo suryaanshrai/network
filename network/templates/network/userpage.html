@@ -2,34 +2,36 @@
 {% load static %}
 
 {% block body %}
-    <div id="username">
-        {{username}}
-    </div>
-    <div>
-        {% if user.is_authenticated and user.username != username %}
-        <form action="{% url 'follow' username %}">
-            {% csrf_token %}
-            <button class="btn btn-primary btn-sm" type="submit">{% if follow_status %} Unfollow {% else %} Follow {% endif %}</button>
-        </form>
-        {% endif %}
-    </div>
-    <div>
-        <p>Followers: {{followers}}</p> <p>Following: {{following}}</p>
-    </div>
-    <div>
-        {% for post in posts %}
-        <div class="post">
-            <i>{{post.time}}</i>
-            <p>{{post.content}} </p>
-            Likes: {{post.likecount}}
-            {% if user.is_authenticated %}
-            <form action="{% url 'likePost' post.id %}" method="post">
+    <div id="UserBody">
+        <div id="username">
+            {{username}}
+        </div>
+        <div>
+            {% if user.is_authenticated and user.username != username %}
+            <form action="{% url 'follow' username %}">
                 {% csrf_token %}
-                <button class="btn btn-primary btn-sm" type="submit">Like</button>
-                <input type="hidden" name="id" value="{{post.id}}">
+                <button class="btn btn-primary btn-sm" type="submit">{% if follow_status %} Unfollow {% else %} Follow {% endif %}</button>
             </form>
             {% endif %}
         </div>
-        {% endfor %}
+        <div id="belowFollowButton">
+            <div>Followers: {{followers}}</div> <div>Following: {{following}}</div>
+        </div>
+        <div>
+            {% for post in posts %}
+            <div class="post">
+                <i>{{post.time}}</i>
+                <p>{{post.content}} </p>
+                Likes: {{post.likecount}}
+                {% if user.is_authenticated %}
+                <form action="{% url 'likePost' post.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-primary btn-sm" type="submit">Like</button>
+                    <input type="hidden" name="id" value="{{post.id}}">
+                </form>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
