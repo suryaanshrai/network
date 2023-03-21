@@ -35,7 +35,8 @@ function getAllPosts() {
             let thispost = document.createElement('div');
             thispost.classList.add('post');
             let userlink = document.createElement('a');
-            thispost.innerHTML = `<b>${post.username}</b> <i>${post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
+            thispost.innerHTML = `<a href="/user/${post.username}"><b>${post.username}</b></a>
+                <i>${post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
 
             let likeForm = document.createElement('form');
             let likeButton = document.createElement('button');
