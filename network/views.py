@@ -125,3 +125,8 @@ def userpage(request, username):
         "followers":follower,
         "following": following
     })
+
+
+@login_required
+def follow(request, tofollow):
+    
