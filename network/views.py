@@ -106,10 +106,9 @@ def like_post(request, postid):
 
 def userpage(request, username):
     user = User.objects.get(username=username)
-    allposts = Posts.objects.filter(poster=user).values
+    allposts = list(Posts.objects.filter(poster=user).values())
 
-    for post in allPosts:
-        post['username']=username
+    for post in allposts:
         post['likecount']=len(Like.objects.filter(post_id=post['id']))
         liked = Like.objects.filter(user=request.user, post=Posts.objects.get(id=post['id']))
         if len(liked) == 0:
