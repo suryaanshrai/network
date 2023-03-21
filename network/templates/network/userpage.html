@@ -6,6 +6,11 @@
         {{username}}
     </div>
     <div>
+        {% if user.is_authenticated and user.username != username %}
+        Apples are tasty
+        {% endif %}
+    </div>
+    <div>
         <p>Followers: {{followers}}</p> <p>Following: {{following}}</p>
     </div>
     <div>
