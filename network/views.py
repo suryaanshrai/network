@@ -116,6 +116,7 @@ def userpage(request, username):
             post['liked'] = False
         else:
             post['liked'] = True
+    allposts.reverse()
     follower = len(user.followers.all())
     following = len(user.following.all())
     return render(request, "network/userpage.html", {
