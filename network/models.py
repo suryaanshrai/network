@@ -13,6 +13,7 @@ class Posts(models.Model):
     def __str__(self):
         return f"{self.poster} posted \"{self.content}\" at {self.time}"
 
+
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="likes")
     post = models.ForeignKey(Posts, on_delete=models.CASCADE, related_name="likes")
@@ -20,6 +21,11 @@ class Like(models.Model):
 
     def __str__(self):
         return f"{self.user} liked {self.post} at {self.time}"
+    
 
 class Follower(models.Model):
-    follower
+    follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name="following")
+    following = models.ForeignKey(User, on_delete=models.CASCADE, related_name="followers")
+
+    def __str__(self):
+        return f"{self.follower} started following {self.following}"
