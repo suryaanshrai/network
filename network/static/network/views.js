@@ -85,3 +85,5 @@ allPosts.addEventListener('click', () => {
     loadPage('AllPosts');
     return false;
 });
+
+
