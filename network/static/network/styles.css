@@ -1,3 +1,6 @@
+#AllPostsButton:hover {
+    cursor:pointer;
+}
 #TopRack {
     text-align:right;
 }
