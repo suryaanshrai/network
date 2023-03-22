@@ -147,5 +147,6 @@ def follow(request, tofollow):
 
 @login_required
 def following_posts(request):
+    allPosts = []
     for user in User.objects.get(username=request.user.username).following.all():
-        user.following.posts.all()
+        allPosts += [user.following.posts.all()]
