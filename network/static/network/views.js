@@ -87,8 +87,9 @@ let followingButton=document.querySelector("#followingButton");
 
 followingButton.onsubmit = ()=> {
     fetch('/following')
-    .then(response => response.JSON())
+    .then(response => response.json())
     .then(data=>{
         console.log(data);
     });
+    return false;
 }
