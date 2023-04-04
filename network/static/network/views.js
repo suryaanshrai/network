@@ -49,7 +49,6 @@ followingButton.onsubmit = ()=> {
     fetch('/following')
     .then(response => response.json())
     .then(data=>{
-        console.log(data);
         loadPosts(data);
     });
     return false;
