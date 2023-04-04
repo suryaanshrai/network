@@ -151,6 +151,8 @@ def following_posts(request):
     for user in User.objects.get(username=request.user.username).following.all():
         allPosts += user.following.posts.values()
     allPosts.sort(key=lambda x: x["id"], reverse=True)
+    for post in allPosts:
+        post['username'] = User.objects.get(id=post['poster_id']).username
     return JsonResponse({
         'allPosts' : allPosts
     })
