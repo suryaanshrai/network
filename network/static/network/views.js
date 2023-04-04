@@ -93,3 +93,7 @@ followingButton.onsubmit = ()=> {
     });
     return false;
 }
+
+function loadPosts(data) {
+    
+}
