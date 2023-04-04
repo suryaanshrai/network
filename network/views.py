@@ -149,5 +149,5 @@ def follow(request, tofollow):
 def following_posts(request):
     allPosts = []
     for user in User.objects.get(username=request.user.username).following.all():
-        allPosts += [user.following.posts.all()]
-    
+        allPosts += user.following.posts.values()
+    allPosts.sort(key=lambda x: x.id, reverse=True)
