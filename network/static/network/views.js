@@ -83,3 +83,12 @@ function loadPage(pageName) {
 
 allPosts = document.querySelector('#AllPostsButton');
 
+let followingButton=document.querySelector("#followingButton");
+
+followingButton.onsubmit = ()=> {
+    fetch('/following')
+    .then(response => response.JSON())
+    .then(data=>{
+        console.log(data);
+    });
+}
