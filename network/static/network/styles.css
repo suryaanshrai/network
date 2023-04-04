@@ -77,3 +77,8 @@
     animation-name:enterFromRight;
     animation-duration:2s;
 }
+
+#following {
+    border:none;
+    background:none;
+}
