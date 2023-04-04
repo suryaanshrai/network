@@ -153,6 +153,13 @@ def following_posts(request):
     allPosts.sort(key=lambda x: x["id"], reverse=True)
     for post in allPosts:
         post['username'] = User.objects.get(id=post['poster_id']).username
+        post['likecount']=len(Like.objects.filter(post_id=post['id']))
+        if request.user.is_authenticated:
+            liked = Like.objects.filter(user=request.user, post=Posts.objects.get(id=post['id']))
+            if len(liked) == 0:
+                post['liked'] = False
+            else:
+                post['liked'] = True
     return JsonResponse({
         'allPosts' : allPosts
     })
