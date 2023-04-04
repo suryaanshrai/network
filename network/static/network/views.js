@@ -30,7 +30,33 @@ function getAllPosts() {
     fetch("/getAllPosts")
     .then(response => response.json())
     .then(data => {
+        loadPosts(data);
+    });
+}
+
+function loadPage(pageName) {
+    document.querySelectorAll('.pages').forEach((page)=> {
+        page.style.display = 'none';
+    });
+    document.querySelector('#'+pageName).style.display = 'block';
+}
+
+allPosts = document.querySelector('#AllPostsButton');
+
+let followingButton=document.querySelector("#followingButton");
+
+followingButton.onsubmit = ()=> {
+    fetch('/following')
+    .then(response => response.json())
+    .then(data=>{
         console.log(data);
+        loadPosts(data);
+    });
+    return false;
+}
+
+function loadPosts(data) {
+    console.log(data);
         data.allPosts.forEach(post => {
             let thispost = document.createElement('div');
             thispost.classList.add('post');
@@ -71,29 +97,4 @@ function getAllPosts() {
             thispost.append(likeForm);
             document.querySelector('#AllPosts').prepend(thispost);
         });
-    });
-}
-
-function loadPage(pageName) {
-    document.querySelectorAll('.pages').forEach((page)=> {
-        page.style.display = 'none';
-    });
-    document.querySelector('#'+pageName).style.display = 'block';
-}
-
-allPosts = document.querySelector('#AllPostsButton');
-
-let followingButton=document.querySelector("#followingButton");
-
-followingButton.onsubmit = ()=> {
-    fetch('/following')
-    .then(response => response.json())
-    .then(data=>{
-        console.log(data);
-    });
-    return false;
-}
-
-function loadPosts(data) {
-    
 }
