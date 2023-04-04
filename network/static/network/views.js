@@ -56,6 +56,7 @@ followingButton.onsubmit = ()=> {
 
 function loadPosts(data) {
     console.log(data);
+    document.querySelector("#AllPosts").innerHTML = "";
         data.allPosts.forEach(post => {
             let thispost = document.createElement('div');
             thispost.classList.add('post');
