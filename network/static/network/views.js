@@ -82,9 +82,4 @@ function loadPage(pageName) {
 }
 
 allPosts = document.querySelector('#AllPostsButton');
-allPosts.addEventListener('click', () => {
-    loadPage('AllPosts');
-    getAllPosts();
-});
-
 
