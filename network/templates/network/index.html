@@ -11,8 +11,7 @@
         newPostButton.addEventListener('click',()=>loadPage("CreatePost"));
     </script>
     {% endif %}
-    <div class="pages" id="AllPosts"></div>
-    <div class="pages" id="AllPosts2"></div>
+
     <div class="pages" id="CreatePost">
         <form action="{% url 'createpost' %}" method="post">
             {% csrf_token %}
@@ -20,6 +19,11 @@
             <input class="btn btn-primary btn-sm" type="submit">
         </form>
     </div>
+
+    <div class="pages" id="AllPosts"></div>
+
+    
+
     <script src="{% static 'network/views.js' %}"></script>
     <script src="{% static 'network/reactui.js' %}" type="text/babel"></script>
 {% endblock %}
