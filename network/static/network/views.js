@@ -98,3 +98,5 @@ function loadPosts(data) {
             document.querySelector('#AllPosts').append(thispost);
         });
 }
+
+document.querySelector("#paginator")
