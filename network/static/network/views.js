@@ -108,7 +108,3 @@ function loadPosts(data) {
             }
         }
 }
-
-function createPaginatorButton(content) {
-    
-}
