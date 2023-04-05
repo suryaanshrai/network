@@ -90,10 +90,9 @@ def getAllPosts(request):
                 post['liked'] = True
     paginator = Paginator(allPosts, 10)
     page_no = request.GET.get('page')
-    page_obj = paginator.get_page(page_no)
+    page_obj = list(paginator.get_page(page_no))
     return JsonResponse({
-        "allPosts": allPosts,
-        "page_obj": page_obj
+        "allPosts": page_obj
     })
 
 @login_required
