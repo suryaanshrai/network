@@ -77,7 +77,6 @@ def createpost(request):
 
 def getAllPosts(request):
     allPosts = list(Posts.objects.values())
-
     for post in allPosts:
         username = User.objects.get(id=post['poster_id']).username
         post['username']=username
@@ -88,6 +87,7 @@ def getAllPosts(request):
                 post['liked'] = False
             else:
                 post['liked'] = True
+    allPosts.reverse()
     paginator = Paginator(allPosts, 10)
     page_no = request.GET.get('page')
     page_obj = list(paginator.get_page(page_no))

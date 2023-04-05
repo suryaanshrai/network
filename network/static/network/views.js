@@ -95,6 +95,6 @@ function loadPosts(data) {
             }
 
             thispost.append(likeForm);
-            document.querySelector('#AllPosts').prepend(thispost);
+            document.querySelector('#AllPosts').append(thispost);
         });
 }
