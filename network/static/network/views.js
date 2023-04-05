@@ -30,6 +30,7 @@ function getAllPosts() {
     fetch("/getAllPosts")
     .then(response => response.json())
     .then(data => {
+
         loadPosts(data);
     });
 }
@@ -97,6 +98,9 @@ function loadPosts(data) {
             thispost.append(likeForm);
             document.querySelector('#AllPosts').append(thispost);
         });
-}
 
-document.querySelector("#paginator")
+        if (data.pagecount > 1) {
+            paginator=document.querySelector("#paginator");
+            
+        }
+}
