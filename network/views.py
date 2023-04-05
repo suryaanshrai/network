@@ -91,7 +91,7 @@ def getAllPosts(request):
     paginator = Paginator(allPosts, 10)
     page_no = request.GET.get('page')
     page_obj = paginator.get_page(page_no)
-    return render("network/test.html", {
+    return render(request, "network/test.html", {
         "page_obj": page_obj
     })
     return JsonResponse({
