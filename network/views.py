@@ -93,7 +93,8 @@ def getAllPosts(request):
     page_obj = list(paginator.get_page(page_no))
     return JsonResponse({
         "allPosts": page_obj,
-        "pagecount":paginator.num_pages
+        "pagecount":paginator.num_pages,
+        "page":page_no
     })
 
 @login_required

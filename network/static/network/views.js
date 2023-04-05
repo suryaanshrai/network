@@ -100,7 +100,15 @@ function loadPosts(data) {
         });
 
         if (data.pagecount > 1) {
-            paginator=document.querySelector("#paginator");
-            paginator.innerHTML = "<ul class=\"pagination\"><li class=\"page-item\"><a class=\"page-link\" href=\"#\">Previous</a></li><li class=\"page-item\"><a class=\"page-link\" href=\"#\">1</a></li><li class=\"page-item\"><a class=\"page-link\" href=\"#\">2</a></li><li class=\"page-item\"><a class=\"page-link\" href=\"#\">3</a></li><li class=\"page-item\"><a class=\"page-link\" href=\"#\">Next</a></li></ul>"
+            let paginator=document.querySelector("#paginator");
+            let pageul=document.createElement('ul');
+            pageul.classList.add('pagination');
+            for (let i = 1; i <= data.pagecount; i++) {
+                let pageli=
+            }
         }
+}
+
+function createPaginatorButton(content) {
+    
 }
