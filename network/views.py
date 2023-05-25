@@ -90,6 +90,8 @@ def getAllPosts(request):
     allPosts.reverse()
     paginator = Paginator(allPosts, 10)
     page_no = request.GET.get('page')
+    if page_no is None:
+        page_no = 0
     page_obj = list(paginator.get_page(page_no))
     return JsonResponse({
         "allPosts": page_obj,
