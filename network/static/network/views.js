@@ -101,5 +101,8 @@ function loadPosts(data) {
 }
 
 function pagination(pageCount) {
+    if (pageCount === 0)
+        return;
+    mydiv=document.querySelector('#paginatory');
     
 }
