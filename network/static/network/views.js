@@ -32,6 +32,7 @@ function getAllPosts() {
     .then(data => {
 
         loadPosts(data);
+        pagination(data.page);
     });
 }
 
@@ -103,7 +104,11 @@ function loadPosts(data) {
 function pagination(pageCount) {
     if (pageCount === 0)
         return;
-    mydiv=document.querySelector('#paginatory');
-    nextButton=document.createElement('button');
-
+    let mydiv=document.querySelector('#paginatory');
+    let nextButton=document.createElement('button');
+    nextButton.classList.add('btn', 'btn-primary', 'btn-sm');
+    let prevButton=nextButton;
+    prevButton.innerHTML = 'Prev';
+    nextButton.innerHTML = 'Next';
+    mydiv.append(prevButton, nextButton);
 }
