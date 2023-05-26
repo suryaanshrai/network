@@ -52,6 +52,7 @@ followingButton.onsubmit = ()=> {
     .then(response => response.json())
     .then(data=>{
         loadPosts(data);
+        pagination(data.pagecount);
     });
     return false;
 }
@@ -102,9 +103,10 @@ function loadPosts(data) {
 }
 
 function pagination(pageCount) {
-    if (pageCount === 0)
-        return;
     let mydiv=document.querySelector('#paginatory');
+    mydiv.innerHTML='';
+    if (pageCount < 1)
+        return;
     let nextButton=document.createElement('button');
     nextButton.classList.add('btn', 'btn-primary', 'btn-sm');
     let prevButton=document.createElement('button');
