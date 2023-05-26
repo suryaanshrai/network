@@ -91,3 +91,8 @@
     margin:5px;
     display:inline;
 }
+
+hr {
+    border:1px solid gray;
+    opacity:50%;
+}
