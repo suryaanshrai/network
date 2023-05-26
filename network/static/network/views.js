@@ -125,7 +125,7 @@ function pagination(pageCount) {
             return false;
         }
         let submitbutton = document.createElement('button');
-        submitbutton.classList.add('btn', 'btn-primary', 'btn-sm');
+        submitbutton.classList.add('btn', 'btn-outline-secondary', 'btn-sm');
         submitbutton.type='submit';
         submitbutton.innerHTML=i;
         myform.append(submitbutton);
