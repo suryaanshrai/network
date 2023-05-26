@@ -112,5 +112,9 @@ function pagination(pageCount) {
     prevButton.innerHTML = 'Prev';
     nextButton.innerHTML = 'Next';
     mydiv.append(prevButton);
+
+    for (let i = 1; i <= pageCount; i++) {
+        
+    }
     mydiv.append(nextButton);
 }
