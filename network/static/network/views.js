@@ -107,8 +107,10 @@ function pagination(pageCount) {
     let mydiv=document.querySelector('#paginatory');
     let nextButton=document.createElement('button');
     nextButton.classList.add('btn', 'btn-primary', 'btn-sm');
-    let prevButton=nextButton;
+    let prevButton=document.createElement('button');
+    prevButton.classList.add('btn', 'btn-primary', 'btn-sm');
     prevButton.innerHTML = 'Prev';
     nextButton.innerHTML = 'Next';
-    mydiv.append(prevButton, nextButton);
+    mydiv.append(prevButton);
+    mydiv.append(nextButton);
 }
