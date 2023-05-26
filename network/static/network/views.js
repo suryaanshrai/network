@@ -98,13 +98,8 @@ function loadPosts(data) {
             thispost.append(likeForm);
             document.querySelector('#AllPosts').append(thispost);
         });
+}
 
-        if (data.pagecount > 1) {
-            let paginator=document.querySelector("#paginator");
-            let pageul=document.createElement('ul');
-            pageul.classList.add('pagination');
-            // for (let i = 1; i <= data.pagecount; i++) {
-            //     let pageli=
-            // }
-        }
+function pagination(pageCount) {
+    
 }
