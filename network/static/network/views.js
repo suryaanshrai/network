@@ -122,8 +122,10 @@ function pagination(pageCount) {
 
             loadPosts(data);
             pagination(data.pagecount);
-    });
+            });
+            return false;
         }
+
     }
     mydiv.append(nextButton);
 }
