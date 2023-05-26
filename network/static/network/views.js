@@ -114,7 +114,7 @@ function pagination(pageCount) {
     mydiv.append(prevButton);
 
     for (let i = 1; i <= pageCount; i++) {
-        
+        myform.
     }
     mydiv.append(nextButton);
 }
