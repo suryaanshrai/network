@@ -21,9 +21,13 @@ function getCookie(name) {
 function toggle(button){
     if(button.innerHTML === 'Like') {
         button.innerHTML = 'Unlike';
+        button.classList.remove('btn-primary');
+        button.classList.add('btn-outline-secondary');
     }
     else {
         button.innerHTML = 'Like';
+        button.classList.remove('btn-outline-secondary');
+        button.classList.add('btn-primary');
     }
 }
 function getAllPosts() {
