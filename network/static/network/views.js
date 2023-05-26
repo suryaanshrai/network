@@ -121,14 +121,15 @@ function pagination(pageCount) {
             .then(data => {
 
             loadPosts(data);
-            pagination(data.pagecount);
             });
             return false;
         }
         let submitbutton = document.createElement('button');
         submitbutton.classList.add('btn', 'btn-primary', 'btn-sm');
         submitbutton.type='submit';
-        
+        submitbutton.innerHTML=i;
+        myform.append(submitbutton);
+        mydiv.append(myform);
     }
     mydiv.append(nextButton);
 }
