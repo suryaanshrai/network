@@ -82,3 +82,10 @@
     border:none;
     background:none;
 }
+
+#paginatory {
+    text-align:center;
+}
+#paginatory * {
+    margin:10px;
+}
