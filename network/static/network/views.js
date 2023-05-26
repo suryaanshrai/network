@@ -67,7 +67,7 @@ function loadPosts(data) {
 
             let likeForm = document.createElement('form');
             let likeButton = document.createElement('button');
-            likeButton.classList.add('btn', 'btn-primary', 'btn-sm')
+            likeButton.classList.add('btn', 'btn-primary', 'btn-sm');
             likeButton.type='submit';
             likeButton.onclick = () => toggle(likeButton);
             if (post['liked'] === false) {
@@ -104,5 +104,6 @@ function pagination(pageCount) {
     if (pageCount === 0)
         return;
     mydiv=document.querySelector('#paginatory');
-    
+    nextButton=document.createElement('button');
+
 }
