@@ -32,7 +32,7 @@ function getAllPosts() {
     .then(data => {
 
         loadPosts(data);
-        pagination(data.page);
+        pagination(data.pagecount);
     });
 }
 
@@ -114,7 +114,16 @@ function pagination(pageCount) {
     mydiv.append(prevButton);
 
     for (let i = 1; i <= pageCount; i++) {
-        myform.
+        let myform = document.createElement('form');
+        myform.onsubmit= ()=> {
+            fetch(`getAllPosts?page=${i}`)
+            .then(response => response.json())
+            .then(data => {
+
+            loadPosts(data);
+            pagination(data.pagecount);
+    });
+        }
     }
     mydiv.append(nextButton);
 }
