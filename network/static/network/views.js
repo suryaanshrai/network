@@ -162,7 +162,6 @@ function pagination_buttons(pageCount, currentPage) {
         myform.append(nextbutton);
         document.querySelector('#paginatory').append(myform);
     }
-    if(pageCount > 2) {
         let nextbuttonform=document.createElement('form');
         let prevbuttonform=document.createElement('form');
 
@@ -180,5 +179,4 @@ function pagination_buttons(pageCount, currentPage) {
         paginationdiv.append(prevbuttonform);
         pagination(pageCount);
         paginationdiv.append(nextbuttonform);
-    }
 }
