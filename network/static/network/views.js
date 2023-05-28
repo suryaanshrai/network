@@ -104,17 +104,6 @@ function loadPosts(data) {
 
 function pagination(pageCount) {
     let mydiv=document.querySelector('#paginatory');
-    // mydiv.innerHTML='';
-    // if (pageCount === 0)
-    //     return;
-    // let nextButton=document.createElement('button');
-    // nextButton.classList.add('btn', 'btn-primary', 'btn-sm');
-    // let prevButton=document.createElement('button');
-    // prevButton.classList.add('btn', 'btn-primary', 'btn-sm');
-    // prevButton.innerHTML = 'Prev';
-    // nextButton.innerHTML = 'Next';
-    // mydiv.append(prevButton);
-
     for (let i = 1; i <= pageCount; i++) {
         let myform = document.createElement('form');
         myform.onsubmit= ()=> {
@@ -138,14 +127,14 @@ function pagination(pageCount) {
 
 function pagination_buttons(pageCount, currentPage) {
     document.querySelector('#paginatory').innerHTML='';
-    if (pageCount===1) {
+    if (pageCount==1) {
         return;
     }
-    if (pageCount===2) {
+    if (pageCount==2) {
         let myform=document.createElement('form');
         myform.onsubmit=()=> {
             let nextpage=1;
-            if(currentPage===1){
+            if(currentPage==1){
                 nextpage=2;
             }
             else {
@@ -171,5 +160,21 @@ function pagination_buttons(pageCount, currentPage) {
         }
         myform.append(nextbutton);
         document.querySelector('#paginatory').append(myform);
+    }
+    if(pageCount > 2) {
+        let nextbuttonform=document.createElement.('form');
+        let prevbuttonform=document.createElement.('form');
+
+        let nextbutton=document.createElement('button');
+        nextbutton.type='submit';
+        nextbutton.classList.add('btn', 'btn-primary', 'btn-sm');
+        nextbutton.innerHTML='Next';
+
+        let prevbutton=document.createElement('button');
+        prevbutton.type='submit';
+        prevbutton.classList.add('btn', 'btn-primary', 'btn-sm');
+        prevbutton.innerHTML='Prev';
+
+        let paginationdiv=document.querySelector('#')
     }
 }
