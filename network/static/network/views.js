@@ -168,13 +168,19 @@ function pagination_buttons(pageCount, currentPage) {
         nextbutton.type='submit';
         nextbutton.classList.add('btn', 'btn-primary', 'btn-sm');
         nextbutton.innerHTML='Next';
+        nextbuttonform.append(nextbutton);
 
         let prevbutton=document.createElement('button');
         prevbutton.type='submit';
         prevbutton.classList.add('btn', 'btn-primary', 'btn-sm');
         prevbutton.innerHTML='Prev';
+        prevbuttonform.append(prevbutton);
+
+        let info=document.createElement('div');
+        info.innerHTML=`Page: ${currentPage}`;
 
         let paginationdiv=document.querySelector('#paginatory');
+        paginationdiv.append(info);
         paginationdiv.append(prevbuttonform);
         pagination(pageCount);
         paginationdiv.append(nextbuttonform);
