@@ -155,12 +155,13 @@ function pagination_buttons(pageCount, currentPage) {
             .then(data => {
 
             loadPosts(data);
+            pagination_buttons(data.pagecount, data.page);
             });
             return false;
         }
         let nextbutton=document.createElement('button');
         nextbutton.type='submit';
-        nextButton.classList.add('btn', 'btn-primary', 'btn-sm');
+        nextbutton.classList.add('btn', 'btn-primary', 'btn-sm');
         if(currentPage===1){
             nextbutton.innerHTML='Next';
         }
