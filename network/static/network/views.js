@@ -178,7 +178,8 @@ function pagination_buttons(pageCount, currentPage) {
         prevbuttonform.append(prevbutton);
 
         nextbuttonform.onsubmit=()=>{
-            fetch(`getAllPosts?page=${currentPage+1}`)
+            currentPage = parseInt(currentPage)+1;
+            fetch(`getAllPosts?page=${currentPage}`)
             .then(response => response.json())
             .then(data => {
 
@@ -188,7 +189,8 @@ function pagination_buttons(pageCount, currentPage) {
             return false;
         }
         prevbuttonform.onsubmit=()=>{
-            fetch(`getAllPosts?page=${currentPage-1}`)
+            currentPage = parseInt(currentPage)-1;
+            fetch(`getAllPosts?page=${currentPage}`)
             .then(response => response.json())
             .then(data => {
 
