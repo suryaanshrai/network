@@ -167,5 +167,7 @@ function pagination_buttons(pageCount, currentPage) {
         else {
             nextbutton.innerHTML='Prev';
         }
+        myform.append(nextbutton);
+        document.querySelector('#paginatory').append(myform);
     }
 }
