@@ -127,6 +127,10 @@ function pagination(pageCount) {
 
 function pagination_buttons(pageCount, currentPage) {
     document.querySelector('#paginatory').innerHTML='';
+    /*
+        The commented code below implements the logic to h
+    */
+    /*
     if (pageCount==1) {
         return;
     }
@@ -161,9 +165,9 @@ function pagination_buttons(pageCount, currentPage) {
         myform.append(nextbutton);
         document.querySelector('#paginatory').append(myform);
     }
-    if(pageCount > 2) {
-        let nextbuttonform=document.createElement.('form');
-        let prevbuttonform=document.createElement.('form');
+    if(pageCount > 2) */{
+        let nextbuttonform=document.createElement('form');
+        let prevbuttonform=document.createElement('form');
 
         let nextbutton=document.createElement('button');
         nextbutton.type='submit';
