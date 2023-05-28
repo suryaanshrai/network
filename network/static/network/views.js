@@ -32,7 +32,7 @@ function getAllPosts() {
     .then(data => {
 
         loadPosts(data);
-        pagination(data.pagecount);
+        pagination_buttons(data.pagecount, data.page);
     });
 }
 
@@ -52,7 +52,7 @@ followingButton.onsubmit = ()=> {
     .then(response => response.json())
     .then(data=>{
         loadPosts(data);
-        pagination(data.pagecount);
+        pagination_buttons(data.pagecount, data.page);
     });
     return false;
 }
@@ -104,16 +104,16 @@ function loadPosts(data) {
 
 function pagination(pageCount) {
     let mydiv=document.querySelector('#paginatory');
-    mydiv.innerHTML='';
-    if (pageCount === 0)
-        return;
-    let nextButton=document.createElement('button');
-    nextButton.classList.add('btn', 'btn-primary', 'btn-sm');
-    let prevButton=document.createElement('button');
-    prevButton.classList.add('btn', 'btn-primary', 'btn-sm');
-    prevButton.innerHTML = 'Prev';
-    nextButton.innerHTML = 'Next';
-    mydiv.append(prevButton);
+    // mydiv.innerHTML='';
+    // if (pageCount === 0)
+    //     return;
+    // let nextButton=document.createElement('button');
+    // nextButton.classList.add('btn', 'btn-primary', 'btn-sm');
+    // let prevButton=document.createElement('button');
+    // prevButton.classList.add('btn', 'btn-primary', 'btn-sm');
+    // prevButton.innerHTML = 'Prev';
+    // nextButton.innerHTML = 'Next';
+    // mydiv.append(prevButton);
 
     for (let i = 1; i <= pageCount; i++) {
         let myform = document.createElement('form');
@@ -157,6 +157,15 @@ function pagination_buttons(pageCount, currentPage) {
             loadPosts(data);
             });
             return false;
+        }
+        let nextbutton=document.createElement('button');
+        nextbutton.type='submit';
+        nextButton.classList.add('btn', 'btn-primary', 'btn-sm');
+        if(currentPage===1){
+            nextbutton.innerHTML='Next';
+        }
+        else {
+            nextbutton.innerHTML='Prev';
         }
     }
 }
