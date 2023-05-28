@@ -104,7 +104,7 @@ function loadPosts(data) {
 
 function pagination(pageCount) {
     let mydiv=document.querySelector('#paginatory');
-    for (let i = 1; i <= pageCount; i++) {
+    for (let i = 1; i <= pageCount && i<=10; i++) {
         let myform = document.createElement('form');
         myform.onsubmit= ()=> {
             fetch(`getAllPosts?page=${i}`)
@@ -175,6 +175,9 @@ function pagination_buttons(pageCount, currentPage) {
         prevbutton.classList.add('btn', 'btn-primary', 'btn-sm');
         prevbutton.innerHTML='Prev';
 
-        let paginationdiv=document.querySelector('#')
+        let paginationdiv=document.querySelector('#paginatory');
+        paginationdiv.append(prevbuttonform);
+        pagination(pageCount);
+        paginationdiv.append(nextbuttonform);
     }
 }
