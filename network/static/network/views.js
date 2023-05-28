@@ -112,6 +112,7 @@ function pagination(pageCount) {
             .then(data => {
 
             loadPosts(data);
+            pagination_buttons(data.pagecount, data.page);
             });
             return false;
         }
@@ -176,6 +177,26 @@ function pagination_buttons(pageCount, currentPage) {
         prevbutton.innerHTML='Prev';
         prevbuttonform.append(prevbutton);
 
+        nextbuttonform.onsubmit=()=>{
+            fetch(`getAllPosts?page=${currentPage+1}`)
+            .then(response => response.json())
+            .then(data => {
+
+            loadPosts(data);
+            pagination_buttons(data.pagecount, data.page);
+            });
+            return false;
+        }
+        prevbuttonform.onsubmit=()=>{
+            fetch(`getAllPosts?page=${currentPage-1}`)
+            .then(response => response.json())
+            .then(data => {
+
+            loadPosts(data);
+            pagination_buttons(data.pagecount, data.page);
+            });
+            return false;
+        }
         let info=document.createElement('div');
         info.innerHTML=`Page: ${currentPage}`;
 
