@@ -126,7 +126,7 @@ function pagination(pageCount) {
 }
 
 function pagination_buttons(pageCount, currentPage) {
-    if (pageCount<=1 || currentPage<1 || currentPage >= pageCount) {
+    if (pageCount==1) {
         return false;
     }
     document.querySelector('#paginatory').innerHTML='';
@@ -178,6 +178,10 @@ function pagination_buttons(pageCount, currentPage) {
 
         nextbuttonform.onsubmit=()=>{
             currentPage = parseInt(currentPage)+1;
+            if (currentPage > pageCount) {
+                currentPage -= 1;
+                return false;
+            }
             fetch(`getAllPosts?page=${currentPage}`)
             .then(response => response.json())
             .then(data => {
@@ -189,6 +193,10 @@ function pagination_buttons(pageCount, currentPage) {
         }
         prevbuttonform.onsubmit=()=>{
             currentPage = parseInt(currentPage)-1;
+            if (currentPage < 1) {
+                currentPage += 1;
+                return false;
+            }
             fetch(`getAllPosts?page=${currentPage}`)
             .then(response => response.json())
             .then(data => {
