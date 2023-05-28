@@ -163,7 +163,7 @@ function pagination_buttons(pageCount, currentPage) {
         let nextbutton=document.createElement('button');
         nextbutton.type='submit';
         nextbutton.classList.add('btn', 'btn-primary', 'btn-sm');
-        if(currentPage===1){
+        if(currentPage==1){
             nextbutton.innerHTML='Next';
         }
         else {
