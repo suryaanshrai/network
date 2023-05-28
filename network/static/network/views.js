@@ -127,10 +127,7 @@ function pagination(pageCount) {
 
 function pagination_buttons(pageCount, currentPage) {
     document.querySelector('#paginatory').innerHTML='';
-    /*
-        The commented code below implements the logic to h
-    */
-    /*
+
     if (pageCount==1) {
         return;
     }
