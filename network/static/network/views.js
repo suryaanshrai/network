@@ -126,11 +126,10 @@ function pagination(pageCount) {
 }
 
 function pagination_buttons(pageCount, currentPage) {
-    document.querySelector('#paginatory').innerHTML='';
-
-    if (pageCount==1) {
+    if (pageCount<=1 || currentPage<1 || currentPage >= pageCount) {
         return;
     }
+    document.querySelector('#paginatory').innerHTML='';
     if (pageCount==2) {
         let myform=document.createElement('form');
         myform.onsubmit=()=> {
