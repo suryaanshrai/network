@@ -135,3 +135,28 @@ function pagination(pageCount) {
     }
     mydiv.append(nextButton);
 }
+
+function pagination_buttons(pageCount, currentPage) {
+    if (pageCount===1) {
+        return;
+    }
+    if (pageCount===2) {
+        let myform=document.createElement('form');
+        myform.onsubmit=()=> {
+            let nextpage=1;
+            if(currentPage===1){
+                nextpage=2;
+            }
+            else {
+                nextpage=1;
+            }
+            fetch(`getAllPosts?page=${nextpage}`)
+            .then(response => response.json())
+            .then(data => {
+
+            loadPosts(data);
+            });
+            return false;
+        }
+    }
+}
