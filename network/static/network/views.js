@@ -122,7 +122,6 @@ function pagination(pageCount) {
         myform.append(submitbutton);
         mydiv.append(myform);
     }
-    mydiv.append(nextButton);
 }
 
 function pagination_buttons(pageCount, currentPage) {
