@@ -137,6 +137,7 @@ function pagination(pageCount) {
 }
 
 function pagination_buttons(pageCount, currentPage) {
+    document.querySelector('#paginatory').innerHTML='';
     if (pageCount===1) {
         return;
     }
