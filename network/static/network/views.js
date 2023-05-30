@@ -217,3 +217,8 @@ function pagination_buttons(pageCount, currentPage) {
         paginationdiv.append(nextbuttonform);
     }
 }
+
+// To do next:
+// pagination for following page, userpages with backend
+// edit post feature
+// likepost feature
