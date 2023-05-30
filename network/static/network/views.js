@@ -127,6 +127,11 @@ function pagination(pageCount) {
 
 function pagination_buttons(pageCount, currentPage) {
     document.querySelector('#paginatory').innerHTML='';
+    let info=document.createElement('div');
+        info.innerHTML=`Page: ${currentPage}`;
+
+        let paginationdiv=document.querySelector('#paginatory');
+        paginationdiv.append(info);
     if (pageCount==1) {
         return false;
     }
@@ -207,7 +212,7 @@ function pagination_buttons(pageCount, currentPage) {
             });
             return false;
         }
-        
+
         paginationdiv.append(prevbuttonform);
         pagination(pageCount);
         paginationdiv.append(nextbuttonform);
