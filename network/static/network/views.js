@@ -126,10 +126,10 @@ function pagination(pageCount) {
 }
 
 function pagination_buttons(pageCount, currentPage) {
+    document.querySelector('#paginatory').innerHTML='';
     if (pageCount==1) {
         return false;
     }
-    document.querySelector('#paginatory').innerHTML='';
     if (pageCount==2) {
         let myform=document.createElement('form');
         myform.onsubmit=()=> {
@@ -207,11 +207,7 @@ function pagination_buttons(pageCount, currentPage) {
             });
             return false;
         }
-        let info=document.createElement('div');
-        info.innerHTML=`Page: ${currentPage}`;
-
-        let paginationdiv=document.querySelector('#paginatory');
-        paginationdiv.append(info);
+        
         paginationdiv.append(prevbuttonform);
         pagination(pageCount);
         paginationdiv.append(nextbuttonform);
