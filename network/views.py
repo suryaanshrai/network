@@ -145,6 +145,8 @@ def userpage(request, username):
 def follow(request, tofollow):
     if not request.user.is_authenticated:
         return HttpResponse('Login Required')
+    if User.objects.get(username=request.user.username)==User.objects.get(username=tofollow):
+        return HttpResponse('Cannot follow yourself')
     if len(Follower.objects.filter(follower=User.objects.get(username=request.user.username), following=User.objects.get(username=tofollow))) == 0:
         new_follow = Follower(follower=User.objects.get(username=request.user.username), following=User.objects.get(username=tofollow))
         new_follow.save()
