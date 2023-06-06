@@ -99,7 +99,6 @@ function loadPosts(data) {
             }
             var isloggedin=false;
             fetch('/isloggedin').
-            then(response=>response.json()).
             then(data=>{
                 isloggedin=data.isloggedin;
             });
