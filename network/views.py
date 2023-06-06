@@ -132,7 +132,7 @@ def userpage(request, username):
         follow_status = True
     except:
         follow_status = False
-    paginator = Paginator(allposts, 5)
+    paginator = Paginator(allposts, 5   )
     page_no = request.GET.get('page')
     if page_no is None:
         page_no = 1

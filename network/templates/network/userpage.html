@@ -36,10 +36,8 @@
     </div>
         {% if pagecount > 1 %}
         <div id="paginatory">
-            Page: {{page_no}}
-            <p id="pagecount" style="display:none">{{pagecount}}</p>
-            <p id="page_no" style="display:none">{{page_no}}</p>
-            <form action="/user/{{username}}?page={{page_no|add:1}}" id="nextButtonForm">
+            Page: {{page}}
+            <form action="/user/{{username}}?page={{page|add:1}}" id="nextButtonForm" method="GET">
                 <button class="btn btn-primary btn-sm" type="submit">Next</button>
             </form>
             <form id="prevButtonForm">
