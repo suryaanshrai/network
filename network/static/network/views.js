@@ -72,8 +72,7 @@ function loadPosts(data) {
                 let userlink = document.createElement('a');
                 thispost.innerHTML = `<a href="/user/${post.username}"><b>${post.username}</b></a>
                     <i>${post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
-                });
-                let likeForm = document.createElement('form');
+                    let likeForm = document.createElement('form');
                 let likeButton = document.createElement('button');
                 likeButton.classList.add('btn', 'btn-primary', 'btn-sm');
                 likeButton.type='submit';
@@ -104,6 +103,7 @@ function loadPosts(data) {
                     return false;
                 }
                 document.querySelector('#AllPosts').append(thispost);
+                });
         }
         else {
             data.allPosts.forEach(post => {
