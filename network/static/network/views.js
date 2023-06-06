@@ -56,7 +56,7 @@ followingButton.onsubmit = ()=> {
     });
     return false;
 }
-
+/*
 function loadPosts(data) {
     console.log(data);
     document.querySelector("#AllPosts").innerHTML = "";
@@ -94,7 +94,7 @@ function loadPosts(data) {
                     headers: {'X-CSRFToken':csrftoken}
                 });
                 thispost.innerHTML=`<a href="/user/${post.username}"><b>${post.username}</b></a>
-                <i>${Date(post.time)}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
+                <i>$post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
                 return false;
             }
 
@@ -102,6 +102,7 @@ function loadPosts(data) {
             document.querySelector('#AllPosts').append(thispost);
         });
 }
+*/
 
 function pagination(pageCount) {
     let mydiv=document.querySelector('#paginatory');
