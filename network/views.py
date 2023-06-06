@@ -190,4 +190,7 @@ def following_posts(request):
     })
 
 def isloggedin(request):
-    if 
+    if request.user.isauthenticated:
+        return JsonResponse({
+            ""
+            })
