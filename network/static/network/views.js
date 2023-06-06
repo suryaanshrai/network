@@ -102,9 +102,10 @@ function loadPosts(data) {
                     <i>$post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
                     return false;
                 }
+                thispost.append(likeForm);
                 document.querySelector('#AllPosts').append(thispost);
                 });
-        }
+            }
         else {
             data.allPosts.forEach(post => {
                 let thispost = document.createElement('div');
@@ -112,6 +113,7 @@ function loadPosts(data) {
                 let userlink = document.createElement('a');
                 thispost.innerHTML = `<a href="/user/${post.username}"><b>${post.username}</b></a>
                     <i>${post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
+                document.querySelector('#AllPosts').append(thispost);
                 });
         }
     });
