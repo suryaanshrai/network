@@ -34,10 +34,17 @@
             {% endfor %}
         </div>
     </div>
-    <div id="paginatory">
         {% if pagecount > 1 %}
+        <div id="paginatory">
             Page: {{page_no}}
-            <button class="btn btn-primary btn-sm"></button>
+            <p id="pagecount" style="display:none">{{pagecount}}</p>
+            <p id="page_no" style="display:none">{{page_no}}</p>
+            <form action="/user/{{username}}?page={{page_no+1}}" id="nextButtonForm">
+                <button class="btn btn-primary btn-sm" type="submit">Next</button>
+            </form>
+            <form id="prevButtonForm">
+                <button class="btn btn-primary btn-sm" type="submit">Prev</button>
+            </form>
+        </div>
         {% endif %}
-    </div>
 {% endblock %}
