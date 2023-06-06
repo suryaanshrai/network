@@ -188,3 +188,6 @@ def following_posts(request):
         "pagecount":paginator.num_pages,
         "page":page_no
     })
+
+def isloggedin(request):
+    if 
