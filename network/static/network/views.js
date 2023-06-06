@@ -60,51 +60,56 @@ followingButton.onsubmit = ()=> {
 function loadPosts(data) {
     console.log(data);
     document.querySelector("#AllPosts").innerHTML = "";
-    var 
+    var isloggedin = false;
     fetch('/isloggedin').
     then(response=>response.json()).
-    then(data => {
-        console.log(data.isloggedin);
+    then(x => {
+        console.log(x.isloggedin);
+        if (x.isloggedin) {
+
+                let likeForm = document.createElement('form');
+                let likeButton = document.createElement('button');
+                likeButton.classList.add('btn', 'btn-primary', 'btn-sm');
+                likeButton.type='submit';
+                likeButton.onclick = () => toggle(likeButton);
+                if (post['liked'] === false) {
+                    likeButton.innerHTML='Like';
+                }
+                else {
+                    likeButton.innerHTML='Unlike';
+                }
+                likeForm.append(likeButton);
+
+                let postid = document.createElement('input');
+                postid.type='hidden';
+                postid.name='id';
+                postid.value=post['id'];
+                likeForm.append(postid);
+
+                const csrftoken = getCookie('csrftoken');
+
+                likeForm.onsubmit = () => {
+                    fetch(`likePost/${post.id}`, {
+                        method:"POST",
+                        headers: {'X-CSRFToken':csrftoken}
+                    });
+                    thispost.innerHTML=`<a href="/user/${post.username}"><b>${post.username}</b></a>
+                    <i>$post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
+                    return false;
+                }
+                document.querySelector('#AllPosts').append(thispost);
+            });
+        }
+        else {
+            data.allPosts.forEach(post => {
+                let thispost = document.createElement('div');
+                thispost.classList.add('post');
+                let userlink = document.createElement('a');
+                thispost.innerHTML = `<a href="/user/${post.username}"><b>${post.username}</b></a>
+                    <i>${post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
+
+        }
     });
-        data.allPosts.forEach(post => {
-            let thispost = document.createElement('div');
-            thispost.classList.add('post');
-            let userlink = document.createElement('a');
-            thispost.innerHTML = `<a href="/user/${post.username}"><b>${post.username}</b></a>
-                <i>${post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
-
-            let likeForm = document.createElement('form');
-            let likeButton = document.createElement('button');
-            likeButton.classList.add('btn', 'btn-primary', 'btn-sm');
-            likeButton.type='submit';
-            likeButton.onclick = () => toggle(likeButton);
-            if (post['liked'] === false) {
-                likeButton.innerHTML='Like';
-            }
-            else {
-                likeButton.innerHTML='Unlike';
-            }
-            likeForm.append(likeButton);
-
-            let postid = document.createElement('input');
-            postid.type='hidden';
-            postid.name='id';
-            postid.value=post['id'];
-            likeForm.append(postid);
-
-            const csrftoken = getCookie('csrftoken');
-
-            likeForm.onsubmit = () => {
-                fetch(`likePost/${post.id}`, {
-                    method:"POST",
-                    headers: {'X-CSRFToken':csrftoken}
-                });
-                thispost.innerHTML=`<a href="/user/${post.username}"><b>${post.username}</b></a>
-                <i>$post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
-                return false;
-            }
-            document.querySelector('#AllPosts').append(thispost);
-        });
 }
 
 
