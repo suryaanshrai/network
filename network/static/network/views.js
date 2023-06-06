@@ -101,7 +101,7 @@ function loadPosts(data) {
             fetch('/isloggedin').
             then(response=>response.json()).
             then(data=>{
-                isloggedin=parseBool(data.isloggedin);
+                isloggedin=data.isloggedin;
             });
             if (isloggedin) {
                 thispost.append(likeForm);
