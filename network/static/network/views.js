@@ -220,6 +220,5 @@ function pagination_buttons(pageCount, currentPage) {
 }
 
 // To do next:
-// pagination for following page, userpages with backend
 // edit post feature
 // likepost feature
