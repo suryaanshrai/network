@@ -56,7 +56,7 @@ followingButton.onsubmit = ()=> {
     });
     return false;
 }
-/*
+
 function loadPosts(data) {
     console.log(data);
     document.querySelector("#AllPosts").innerHTML = "";
@@ -102,7 +102,7 @@ function loadPosts(data) {
             document.querySelector('#AllPosts').append(thispost);
         });
 }
-*/
+
 
 function pagination(pageCount) {
     let mydiv=document.querySelector('#paginatory');
