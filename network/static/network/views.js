@@ -107,7 +107,8 @@ function loadPosts(data) {
                 thispost.innerHTML = `<a href="/user/${post.username}"><b>${post.username}</b></a>
                     <i>${post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
                 });
-        });
+        }
+    });
 }
 
 
