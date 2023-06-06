@@ -93,7 +93,8 @@ function loadPosts(data) {
                     method:"POST",
                     headers: {'X-CSRFToken':csrftoken}
                 });
-                thispost.innerHTML=`<b>${post.username}</b> <i>${post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
+                thispost.innerHTML=`<a href="/user/${post.username}"><b>${post.username}</b></a>
+                <i>${Date(post.time)}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
                 return false;
             }
 
