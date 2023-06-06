@@ -132,11 +132,14 @@ def userpage(request, username):
         follow_status = True
     except:
         follow_status = False
-    paginator = Paginator(allposts, 5   )
+    paginator = Paginator(allposts, 5)
     page_no = request.GET.get('page')
     if page_no is None:
         page_no = 1
-    page_obj = list(paginator.get_page(page_no))
+    if page_no > 0 and page_no <= paginator.num_pages:
+        page_obj = list(paginator.get_page(page_no))
+    else:
+        page_obj = list(paginator.get_page(1))
     return render(request, "network/userpage.html", {
         "username":username,
         "posts":page_obj,
