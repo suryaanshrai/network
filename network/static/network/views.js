@@ -65,7 +65,7 @@ function loadPosts(data) {
             thispost.classList.add('post');
             let userlink = document.createElement('a');
             thispost.innerHTML = `<a href="/user/${post.username}"><b>${post.username}</b></a>
-                <i>${Date(post.time)}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
+                <i>${post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
 
             let likeForm = document.createElement('form');
             let likeButton = document.createElement('button');
