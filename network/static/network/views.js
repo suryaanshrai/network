@@ -21,6 +21,7 @@ function getCookie(name) {
 function toggle(button){
     if(button.innerHTML === 'Like') {
         button.innerHTML = 'Unlike';
+        document.querySelector(`#post${post.id}`).innerHTML=`Likes: ${}`;
     }
     else {
         button.innerHTML = 'Like';
@@ -98,11 +99,6 @@ function loadPosts(data) {
                         method:"POST",
                         headers: {'X-CSRFToken':csrftoken}
                     });
-                    let likecounter=document.querySelector(`#post${post.id}`);
-                    let likeButton=document.querySelector()
-                    if (likeButton.innerHTML == "Like") {
-                        likecounter
-                    }
                     return false;
                 }
                 thispost.append(likeForm);
