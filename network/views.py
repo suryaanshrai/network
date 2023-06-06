@@ -116,7 +116,7 @@ def like_post(request, postid):
 def userpage(request, username):
     user = User.objects.get(username=username)
     allposts = list(Posts.objects.filter(poster=user).values())
-
+    postcount = len(allposts)
     for post in allposts:
         post['likecount']=len(Like.objects.filter(post_id=post['id']))
         liked=[1]
@@ -142,10 +142,10 @@ def userpage(request, username):
         "posts":page_obj,
         "pagecount":paginator.num_pages,
         "page":page_no,
+        "posts":postcount,
         "followers":follower,
         "following": following,
         "follow_status":follow_status
-
     })
 
 
