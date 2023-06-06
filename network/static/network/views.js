@@ -60,6 +60,12 @@ followingButton.onsubmit = ()=> {
 function loadPosts(data) {
     console.log(data);
     document.querySelector("#AllPosts").innerHTML = "";
+    var 
+    fetch('/isloggedin').
+    then(response=>response.json()).
+    then(data => {
+        console.log(data.isloggedin);
+    });
         data.allPosts.forEach(post => {
             let thispost = document.createElement('div');
             thispost.classList.add('post');
@@ -96,14 +102,6 @@ function loadPosts(data) {
                 thispost.innerHTML=`<a href="/user/${post.username}"><b>${post.username}</b></a>
                 <i>$post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
                 return false;
-            }
-            var isloggedin=false;
-            fetch('/isloggedin').
-            then(data=>{
-                isloggedin=data.isloggedin;
-            });
-            if (isloggedin) {
-                thispost.append(likeForm);
             }
             document.querySelector('#AllPosts').append(thispost);
         });
