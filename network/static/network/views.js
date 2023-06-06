@@ -71,7 +71,7 @@ function loadPosts(data) {
                 thispost.classList.add('post');
                 let userlink = document.createElement('a');
                 thispost.innerHTML = `<a href="/user/${post.username}"><b>${post.username}</b></a>
-                    <i>${post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
+                    <i>${post.time}</i> <p>${post.content}</p> <p id="post${post['id']}">Likes: ${post.likecount}</p>`;
                     let likeForm = document.createElement('form');
                 let likeButton = document.createElement('button');
                 likeButton.classList.add('btn', 'btn-primary', 'btn-sm');
@@ -98,8 +98,11 @@ function loadPosts(data) {
                         method:"POST",
                         headers: {'X-CSRFToken':csrftoken}
                     });
-                    thispost.innerHTML=`<a href="/user/${post.username}"><b>${post.username}</b></a>
-                    <i>${post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
+                    let likecounter=document.querySelector(`#post${post.id}`);
+                    let likeButton=document.querySelector()
+                    if (likeButton.innerHTML == "Like") {
+                        likecounter
+                    }
                     return false;
                 }
                 thispost.append(likeForm);
