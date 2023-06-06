@@ -192,5 +192,9 @@ def following_posts(request):
 def isloggedin(request):
     if request.user.isauthenticated:
         return JsonResponse({
-            ""
+            "isloggedin":True
             })
+    else:
+        return JsonResponse({
+            "isloggedin":False
+        })

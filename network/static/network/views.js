@@ -97,8 +97,15 @@ function loadPosts(data) {
                 <i>$post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
                 return false;
             }
-
-            thispost.append(likeForm);
+            let isloggedin=false;
+            fetch('/isloggedin').
+            then(response=>response.json()).
+            then(data=>{
+                isloggedin=parseBool(data.isloggedin);
+            });
+            if (isloggedin) {
+                thispost.append(likeForm);
+            }
             document.querySelector('#AllPosts').append(thispost);
         });
 }
