@@ -21,8 +21,6 @@ function getCookie(name) {
 function toggle(button){
     if(button.innerHTML === 'Like') {
         button.innerHTML = 'Unlike';
-        let likecounter = document.querySelector(`#post${post.id}`);
-        
     }
     else {
         button.innerHTML = 'Like';
