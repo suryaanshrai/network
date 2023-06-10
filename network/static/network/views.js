@@ -103,9 +103,8 @@ function loadPosts(data) {
                 thispost.append(likeForm);
                 document.querySelector('#AllPosts').append(thispost);
                 });
-                delay(100);
-
-            }
+                setTimeout(updateLikes(post['id']));
+        }
         else {
             data.allPosts.forEach(post => {
                 let thispost = document.createElement('div');
@@ -115,11 +114,13 @@ function loadPosts(data) {
                     <i>${post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
                 document.querySelector('#AllPosts').append(thispost);
                 });
-                setTimeout(update)
         }
     });
 }
 
+function updateLikes(postid) {
+    
+}
 
 function pagination(pageCount) {
     let mydiv=document.querySelector('#paginatory');
