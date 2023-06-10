@@ -102,6 +102,7 @@ function loadPosts(data) {
                     .then(data => {
                         console.log(data);
                         document.querySelector(`#post${post.id}`).innerHTML = `Likes: ${data.newLikecount}`;
+                        console.log(data.newLikecount);
                     })
                     return false;
                 }
