@@ -98,7 +98,9 @@ function loadPosts(data) {
                         method:"POST",
                         headers: {'X-CSRFToken':csrftoken}
                     }).
-                    then();
+                    then(reponse => {
+                        console.log(response);
+                    });
                     return false;
                 }
                 thispost.append(likeForm);
