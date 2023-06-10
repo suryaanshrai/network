@@ -205,3 +205,14 @@ def isloggedin(request):
         return JsonResponse({
             "isloggedin":False
         })
+
+@login_required
+def editpost(request):
+    if request.method == "POST":
+        postid = request.POST['post_id']
+        post = Post.objects.get(id=postid)
+        post_content = post.content
+        return render(request, 'network/editpost.html', {
+            "post_content":post_content
+        })
+    return HttpResponseRedirect(reverse('index'))

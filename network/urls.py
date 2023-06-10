@@ -14,5 +14,6 @@ urlpatterns = [
     path("user/<str:username>", views.userpage, name="userpage"),
     path("follow/<str:tofollow>", views.follow, name="follow"),
     path("following", views.following_posts, name="following"),
-    path("isloggedin",views.isloggedin, name="isloggedin")
+    path("isloggedin",views.isloggedin, name="isloggedin"),
+    path("editpost",views.editpost,name="editpost"),
 ]

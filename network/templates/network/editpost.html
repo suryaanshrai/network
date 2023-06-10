@@ -1,0 +1,10 @@
+{% extends "network/layout.html" %}
+
+{% block title %}Edit Post{% endblock %}
+
+{% block body %}
+    <form action="{% url 'editpost' %}" method="post">
+        {% csrf_token %}
+        <input type="textfield"
+    </form>
+{% endblock %}
