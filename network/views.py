@@ -106,7 +106,11 @@ def like_post(request, postid):
         if (len(Like.objects.filter(user=request.user, post=Posts.objects.get(id=postid))) == 0):
             new_like = Like(user=request.user, post=Posts.objects.get(id=postid))
             new_like.save()
-            return HttpResponse('Liked')
+            likecount
+            return JsonResponse({
+                "Like":"success",
+                "newlikecount":
+            })
         else:
             new_like = Like.objects.get(user=request.user, post=Posts.objects.get(id=postid))
             new_like.delete()
