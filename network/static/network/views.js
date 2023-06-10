@@ -98,11 +98,10 @@ function loadPosts(data) {
                         method:"POST",
                         headers: {'X-CSRFToken':csrftoken}
                     })
-                    .then(reponse=>reponse.json())
+                    .then(likereponse=>likereponse.json())
                     .then(likedata => {
                         console.log(likedata);
-                        document.querySelector(`#post${post.id}`).innerHTML = `Likes: ${likedata.newLikecount}`;
-                        console.log(likedata.Like);
+                        document.querySelector(`#post${post.id}`).innerHTML = `Likes: ${likedata.newlikecount}`;
                     })
                     return false;
                 }
