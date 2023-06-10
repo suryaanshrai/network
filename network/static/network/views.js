@@ -97,13 +97,13 @@ function loadPosts(data) {
                     fetch(`likePost/${post.id}`, {
                         method:"POST",
                         headers: {'X-CSRFToken':csrftoken}
-                    });
+                    }).
+                    then();
                     return false;
                 }
                 thispost.append(likeForm);
                 document.querySelector('#AllPosts').append(thispost);
                 });
-                setTimeout(updateLikes(post['id']));
         }
         else {
             data.allPosts.forEach(post => {
@@ -119,7 +119,7 @@ function loadPosts(data) {
 }
 
 function updateLikes(postid) {
-    
+
 }
 
 function pagination(pageCount) {
