@@ -209,16 +209,19 @@ def isloggedin(request):
 @login_required
 def editpost(request, id):
     if request.method == "GET":
-        postid = request.POST['post_id']
-        editthispost = request.POST['edit_this_post']
+        try:
+            postid = request.POST['post_id']
+            editthispost = request.POST['edit_this_post']
+        except:
+            editthispost=None
         if editthispost is not None:
             post = Posts.objects.get(id=postid)
             post.content=request.POST['post_content']
             post.save()
-        post = Posts.objects.get(id=postid)
+        post = Posts.objects.get(id=id)
         post_content = post.content
         return render(request, 'network/editpost.html', {
             "post_content":post_content,
-            "post_id":postid
+            "post_id":id
         })
     return HttpResponseRedirect(reverse('index'))
