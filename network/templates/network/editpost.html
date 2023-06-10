@@ -5,6 +5,8 @@
 {% block body %}
     <form action="{% url 'editpost' %}" method="post">
         {% csrf_token %}
-        <input type="textfield"
+        <input name="post_content" type="textfield" value="{{post_content}}">
+        <input name="post_id" type="hidden" value="post_id">
+        <input type="submit" value="Edit Post">
     </form>
 {% endblock %}
