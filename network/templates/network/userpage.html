@@ -26,7 +26,13 @@
                 {% if user.is_authenticated %}
                 <form action="{% url 'likePost' post.id %}" method="post">
                     {% csrf_token %}
-                    <button class="btn btn-primary btn-sm" type="submit">Like</button>
+                    <button class="btn btn-primary btn-sm" type="submit">
+                        {% if post.liked %}
+                            Unlike
+                        {% else %}
+                            Like
+                        {% endif %}
+                    </button>
                     <input type="hidden" name="id" value="{{post.id}}">
                 </form>
                 {% endif %}
