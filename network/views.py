@@ -106,15 +106,19 @@ def like_post(request, postid):
         if (len(Like.objects.filter(user=request.user, post=Posts.objects.get(id=postid))) == 0):
             new_like = Like(user=request.user, post=Posts.objects.get(id=postid))
             new_like.save()
-            likecount
+            likecount = len(Like.objects.filter(post_id=postid))
             return JsonResponse({
                 "Like":"success",
-                "newlikecount":
+                "newlikecount":likecount
             })
         else:
             new_like = Like.objects.get(user=request.user, post=Posts.objects.get(id=postid))
             new_like.delete()
-            return HttpResponse('Unliked')
+            likecount = len(Like.objects.filter(post_id=postid))
+            return JsonResponse({
+                "Unike":"success",
+                "newlikecount":likecount
+            })
     return HttpResponse('Invalid Request')
 
 def userpage(request, username):
