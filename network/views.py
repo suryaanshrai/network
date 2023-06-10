@@ -127,7 +127,7 @@ def userpage(request, username):
     postcount = len(allposts)
     for post in allposts:
         post['likecount']=len(Like.objects.filter(post_id=post['id']))
-        liked=[1]
+        liked=[]
         if len(liked) == 0:
             post['liked'] = False
         else:
