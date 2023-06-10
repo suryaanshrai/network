@@ -97,7 +97,12 @@ function loadPosts(data) {
                     fetch(`likePost/${post.id}`, {
                         method:"POST",
                         headers: {'X-CSRFToken':csrftoken}
-                    });
+                    })
+                    .then(reponse=>reponse.json())
+                    .then(data => {
+                        console.log(data);
+                        document.querySelector(`#post${post.id}`).innerHTML = `Likes: ${data.newLikecount}`;
+                    })
                     return false;
                 }
                 thispost.append(likeForm);
