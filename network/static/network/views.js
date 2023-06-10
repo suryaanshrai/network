@@ -104,7 +104,7 @@ function loadPosts(data) {
                 document.querySelector('#AllPosts').append(thispost);
                 });
                 delay(100);
-                
+
             }
         else {
             data.allPosts.forEach(post => {
@@ -115,6 +115,7 @@ function loadPosts(data) {
                     <i>${post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
                 document.querySelector('#AllPosts').append(thispost);
                 });
+                setTimeout(update)
         }
     });
 }
