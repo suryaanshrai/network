@@ -93,7 +93,7 @@ function loadPosts(data) {
 
                 const csrftoken = getCookie('csrftoken');
 
-                likeForm.onsubmit = () => {
+                likeForm.onSubmit = () => {
                     fetch(`likePost/${post.id}`, {
                         method:"POST",
                         headers: {'X-CSRFToken':csrftoken}
@@ -103,6 +103,8 @@ function loadPosts(data) {
                 thispost.append(likeForm);
                 document.querySelector('#AllPosts').append(thispost);
                 });
+                delay(100);
+                
             }
         else {
             data.allPosts.forEach(post => {
