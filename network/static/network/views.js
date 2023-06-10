@@ -93,19 +93,17 @@ function loadPosts(data) {
 
                 const csrftoken = getCookie('csrftoken');
 
-                likeForm.onSubmit = () => {
+                likeForm.onsubmit = () => {
                     fetch(`likePost/${post.id}`, {
                         method:"POST",
                         headers: {'X-CSRFToken':csrftoken}
-                    }).then(reponse => {
-                        console.log(response);
                     });
                     return false;
                 }
                 thispost.append(likeForm);
                 document.querySelector('#AllPosts').append(thispost);
                 });
-        }
+            }
         else {
             data.allPosts.forEach(post => {
                 let thispost = document.createElement('div');
@@ -119,9 +117,6 @@ function loadPosts(data) {
     });
 }
 
-function updateLikes(postid) {
-
-}
 
 function pagination(pageCount) {
     let mydiv=document.querySelector('#paginatory');
