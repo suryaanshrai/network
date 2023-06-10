@@ -145,7 +145,7 @@ def userpage(request, username):
     if page_no is None or int(page_no) < 0 or int(page_no)>paginator.num_pages:
         page_no = 1
     page_obj = list(paginator.get_page(page_no))
-    return render(request, "network/userpage.html", {
+    return JsonResponse( {
         "username":username,
         "posts":page_obj,
         "pagecount":paginator.num_pages,
