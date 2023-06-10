@@ -207,8 +207,8 @@ def isloggedin(request):
         })
 
 @login_required
-def editpost(request):
-    if request.method == "POST":
+def editpost(request, id):
+    if request.method == "GET":
         postid = request.POST['post_id']
         editthispost = request.POST['edit_this_post']
         if editthispost is not None:
