@@ -94,13 +94,16 @@ function loadPosts(data) {
                 const csrftoken = getCookie('csrftoken');
 
                 likeForm.onSubmit = () => {
+                    console.log("okay this works");
                     fetch(`likePost/${post.id}`, {
                         method:"POST",
                         headers: {'X-CSRFToken':csrftoken}
-                    }).
-                    then(reponse => {
-                        console.log(response);
+                    }).then(reponse => response.json())
+                    .then(data=> {
+                        console.log(data);
+                        console.log("second heck");
                     });
+                    console.log("maybe");
                     return false;
                 }
                 thispost.append(likeForm);
