@@ -1,5 +1,5 @@
 function LikePost(id) {
-    fetch(`/likepost/${id}`, {
+    fetch(`likePost/${id}`, {
         method: 'POST',
         body: new FormData(document.querySelector(`${id}form`))
     })
@@ -7,4 +7,5 @@ function LikePost(id) {
     .then(data => {
         console.log(data);
     });
+    return false;
 }
