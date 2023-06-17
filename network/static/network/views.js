@@ -107,15 +107,26 @@ function loadPosts(data) {
                     return false;
                 }
 
-                let editForm = document.createElement('form');
+                let edit = document.createElement('div');
                 let editButton = document.createElement('button');
+                let editSubmit = document.createElement('button');
                 let editText = document.createElement('textarea');
+                editText.style.display = "none";
+                editButton.innerHTML="Edit";
+                editButton.onclick=()=> {
+                    editText.style.display="block";
+                    editSubmit.style.display="block";
+                    editButton.style.display="none";
+                }
                 editButton.classList.add('btn', 'btn-primary', 'btn-sm');
-                editButton.type = 'submit';
-                editForm.append(editText,editButton);
+                editSubmit.classList.add('btn', 'btn-primary', 'btn-sm');
+                editSubmit.type="submit";
+                
+                editForm.append(editText, editSubmit);
+                edit.append(editText,editForm);
 
                 thispost.append(likeForm);
-                thispost.append(editForm);
+                thispost.append(edit);
                 document.querySelector('#AllPosts').append(thispost);
             });
         } else {
