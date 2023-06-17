@@ -111,6 +111,7 @@ function loadPosts(data) {
                 let editButton = document.createElement('button');
                 let editSubmit = document.createElement('button');
                 let editText = document.createElement('textarea');
+                let editForm = document.createElement('form');
                 editText.style.display = "none";
                 editButton.innerHTML="Edit";
                 editButton.onclick=()=> {
@@ -121,9 +122,10 @@ function loadPosts(data) {
                 editButton.classList.add('btn', 'btn-primary', 'btn-sm');
                 editSubmit.classList.add('btn', 'btn-primary', 'btn-sm');
                 editSubmit.type="submit";
-                
+                editSubmit.style.display="none";
+                editSubmit.innerHTML="Done";
                 editForm.append(editText, editSubmit);
-                edit.append(editText,editForm);
+                edit.append(editButton,editForm);
 
                 thispost.append(likeForm);
                 thispost.append(edit);
