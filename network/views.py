@@ -245,11 +245,15 @@ def editpost(request):
         postid = request.POST["post_id"]
         post = Posts.objects.get(id=postid)
         if post.poster != request.user:
-            return HttpResponse("Invalid Request")
+            return JsonResponse({
+                "Response":"Inappropriate user",
+            })
         post_content = request.POST["post_content"]
         if post_content == "":
             return JsonResponse({"post_content": post.content,})
         post.content = post_content
         post.save()
         return JsonResponse({"post_content": post_content,})
-    return HttpResponse("Invalid Request")
+    return JsonResponse({
+        "Response":"Invalid Request",   
+    })
