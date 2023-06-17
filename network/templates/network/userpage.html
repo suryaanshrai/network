@@ -22,10 +22,10 @@
             <div class="post">
                 <i>{{post.time}}</i>
                 <p>{{post.content}} </p>
-                <p id="{{post.id}}likes">Likes: {{post.likecount}}</p>
+                <p id="post{{post.id}}">Likes: {{post.likecount}}</p>
                 {% if user.is_authenticated %}
-                <form id="{{post.id}}form" onsubmit="LikePost({{post.id}}); return false">
-                    {% csrf_token %}
+                <form id="{{post.id}}form" onsubmit="LikePost({{post.id}}, {% csrf_token %}); return false">
+
                     <button class="btn btn-primary btn-sm" id="{{post.id}}button" type="submit">
                         {% if post.liked %}
                             Unlike
