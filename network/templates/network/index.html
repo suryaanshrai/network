@@ -8,8 +8,10 @@
     </div>
     <script>
         newPostButton = document.querySelector("#newPostButton");
-        newPostButton.addEventListener('click',()=>loadPage("CreatePost"));
-        document.querySelector("#paginatory").innerHTML="";
+        newPostButton.addEventListener('click',()=>{
+            loadPage("CreatePost");
+            document.querySelector("#paginatory").style.display="none";
+        });
     </script>
     {% endif %}
 
