@@ -107,6 +107,11 @@ function loadPosts(data) {
                     return false;
                 }
                 thispost.append(likeForm);
+
+                let likeForm = document.createElement('form');
+                let likeButton = document.createElement('button');
+                likeButton.classList.add('btn', 'btn-primary', 'btn-sm');
+                likeButton.type = 'submit';
                 document.querySelector('#AllPosts').append(thispost);
             });
         } else {
