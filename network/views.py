@@ -118,14 +118,14 @@ def like_post(request, postid):
             new_like = Like(user=request.user, post=Posts.objects.get(id=postid))
             new_like.save()
             likecount = len(Like.objects.filter(post_id=postid))
-            return JsonResponse({"Like": "success", "newlikecount": likecount})
+            return JsonResponse({"likestatus": "liked", "newlikecount": likecount})
         else:
             new_like = Like.objects.get(
                 user=request.user, post=Posts.objects.get(id=postid)
             )
             new_like.delete()
             likecount = len(Like.objects.filter(post_id=postid))
-            return JsonResponse({"Unike": "success", "newlikecount": likecount})
+            return JsonResponse({"likestatus": "unliked", "newlikecount": likecount})
     return HttpResponse("Invalid Request")
 
 
