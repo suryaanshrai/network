@@ -1,4 +1,5 @@
 function LikePost(id) {
+    console.log("Happy Me");
     fetch(`likePost/${id}`, {
         method: 'POST',
         body: new FormData(document.querySelector(`#${id}form`))
