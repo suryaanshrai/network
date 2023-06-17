@@ -15,7 +15,7 @@
     <div class="pages" id="CreatePost">
         <form action="{% url 'createpost' %}" method="post">
             {% csrf_token %}
-            <textarea name="content"></textarea>
+            <textarea name="content" placeholder="We are eager to recieve your post!"></textarea>
             <input class="btn btn-primary btn-sm" type="submit">
         </form>
     </div>
