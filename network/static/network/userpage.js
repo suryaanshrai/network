@@ -34,7 +34,7 @@ function LikePost(id) {
     .then(likedata => {
         console.log(likedata);
         document.querySelector(`#post${id}`).innerHTML = `Likes: ${likedata.newlikecount}`;
-        let likebutton = document.querySelector(`#${id}button`);
+        let likebutton = document.querySelector(`#button${id}`);
         if (likedata.likestatus == "liked") {
             likebutton.innerHTML= "Unlike";
         }
