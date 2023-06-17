@@ -24,7 +24,7 @@
                 <p>{{post.content}} </p>
                 <p id="post{{post.id}}">Likes: {{post.likecount}}</p>
                 {% if user.is_authenticated %}
-                <form id="{{post.id}}form" onsubmit="LikePost({{post.id}}, {% csrf_token %}); return false">
+                <form id="{{post.id}}form" onsubmit="LikePost({{post.id}}); return false">
 
                     <button class="btn btn-primary btn-sm" id="{{post.id}}button" type="submit">
                         {% if post.liked %}
