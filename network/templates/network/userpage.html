@@ -26,7 +26,7 @@
                 {% if user.is_authenticated %}
                 <form id="{{post.id}}form" onsubmit="LikePost({{post.id}}); return false">
 
-                    <button class="btn btn-primary btn-sm" id="{{post.id}}button" type="submit">
+                    <button class="btn btn-primary btn-sm" id="button{{post.id}}" type="submit">
                         {% if post.liked %}
                             Unlike
                         {% else %}
