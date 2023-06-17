@@ -106,13 +106,14 @@ function loadPosts(data) {
                         })
                     return false;
                 }
-                thispost.append(likeForm);
 
                 let editForm = document.createElement('form');
                 let editButton = document.createElement('button');
                 let editText = document.createElement('textarea');
                 editButton.classList.add('btn', 'btn-primary', 'btn-sm');
                 editButton.type = 'submit';
+                if ()
+                thispost.append(likeForm);
                 document.querySelector('#AllPosts').append(thispost);
             });
         } else {
