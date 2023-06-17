@@ -125,7 +125,7 @@ function loadPosts(data) {
                             'post_id':post['id'],
                         }
                     })
-                    .then(likereponse => likereponse.json())
+                    .then(likeresponse => likeresponse.json())
                         .then(likedata => {
                         console.log(likedata);
                         })
