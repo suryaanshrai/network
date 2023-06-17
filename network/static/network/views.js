@@ -110,7 +110,7 @@ function loadPosts(data) {
 
                 let editForm = document.createElement('form');
                 let editButton = document.createElement('button');
-                let editText = document
+                let editText = document.createElement('textarea');
                 editButton.classList.add('btn', 'btn-primary', 'btn-sm');
                 editButton.type = 'submit';
                 document.querySelector('#AllPosts').append(thispost);
