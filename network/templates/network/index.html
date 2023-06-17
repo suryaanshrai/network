@@ -9,6 +9,7 @@
     <script>
         newPostButton = document.querySelector("#newPostButton");
         newPostButton.addEventListener('click',()=>loadPage("CreatePost"));
+        document.querySelector("#paginatory").style.display="none";
     </script>
     {% endif %}
 
@@ -22,7 +23,7 @@
 
     <div class="pages" id="AllPosts"></div>
     <hr>
-    <div class="pages" id="paginatory"></div>
+    <div id="paginatory"></div>
 
     <script src="{% static 'network/views.js' %}"></script>
     <script src="{% static 'network/reactui.js' %}" type="text/babel"></script>
