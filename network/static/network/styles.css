@@ -19,6 +19,7 @@
     margin:10px;
     height:5cm;
     width:70%;
+    border-radius:.5cm;
 }
 
 @keyframes enterFromRight {
