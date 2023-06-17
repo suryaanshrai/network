@@ -246,10 +246,8 @@ def editpost(request):
         post = Posts.objects.get(id=postid)
         if post.poster != request.user:
             return HttpResponse("Invalid Request")
-        post_content=request.POST["post_content"]
+        post_content = request.POST["post_content"]
         post.content = post_content
         post.save()
-        return JsonResponse(
-            {"post_content": post_content, "post_id": id}
-        )
+        return JsonResponse({"post_content": post_content, "post_id": id})
     return HttpResponse("Invalid Request")

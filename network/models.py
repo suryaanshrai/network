@@ -2,8 +2,10 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from datetime import datetime
 
+
 class User(AbstractUser):
     pass
+
 
 class Posts(models.Model):
     poster = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
@@ -11,7 +13,7 @@ class Posts(models.Model):
     time = models.DateTimeField(default=datetime.now())
 
     def __str__(self):
-        return f"{self.poster} posted \"{self.content}\" at {self.time}"
+        return f'{self.poster} posted "{self.content}" at {self.time}'
 
 
 class Like(models.Model):
@@ -24,8 +26,12 @@ class Like(models.Model):
 
 
 class Follower(models.Model):
-    follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name="following")
-    following = models.ForeignKey(User, on_delete=models.CASCADE, related_name="followers")
+    follower = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="following"
+    )
+    following = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="followers"
+    )
 
     def __str__(self):
         return f"{self.follower} started following {self.following}"

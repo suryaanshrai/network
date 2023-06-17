@@ -1,37 +1,39 @@
 #AllPostsButton:hover {
-    cursor:pointer;
+    cursor: pointer;
 }
+
 #TopRack {
-    text-align:right;
+    text-align: right;
 }
+
 #TopRack * {
-    margin-right:10px;
-    margin-bottom:7px;
+    margin-right: 10px;
+    margin-bottom: 7px;
 }
 
 .post {
-    border:1px solid black;
-    margin:10px;
-    padding:3px;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 3px;
 }
 
 #CreatePost textarea {
-    margin:10px;
-    padding:10px;
-    height:5cm;
-    width:70%;
-    border-radius:15px;
+    margin: 10px;
+    padding: 10px;
+    height: 5cm;
+    width: 70%;
+    border-radius: 15px;
 }
 
 @keyframes enterFromRight {
     0% {
         opacity: 0;
-        padding-left:1cm;
+        padding-left: 1cm;
     }
 
     100% {
         opacity: 1;
-        padding-left:0cm;
+        padding-left: 0cm;
     }
 }
 
@@ -48,11 +50,11 @@
 }
 
 #username {
-    font-size:36px;
-    font-weight:bold;
-    padding-bottom:15px;
+    font-size: 36px;
+    font-weight: bold;
+    padding-bottom: 15px;
     animation-name: enterFromRight;
-    animation-duration:2s;
+    animation-duration: 2s;
 }
 
 
@@ -61,40 +63,41 @@
     animation-duration: 3s;
 }
 
-#UserBody{
-    padding:.5cm;
+#UserBody {
+    padding: .5cm;
 }
 
 #belowFollowButton {
     display: flex;
-    flex:wrap;
+    flex: wrap;
 }
 
-#belowFollowButton > div {
-    padding-right:10px;
-    padding-top:10px;
+#belowFollowButton>div {
+    padding-right: 10px;
+    padding-top: 10px;
 }
 
 #CreatePost {
-    animation-name:enterFromRight;
-    animation-duration:2s;
+    animation-name: enterFromRight;
+    animation-duration: 2s;
 }
 
 #following {
-    border:none;
-    background:none;
+    border: none;
+    background: none;
 }
 
 #paginatory {
-    text-align:center;
+    text-align: center;
 
 }
+
 #paginatory * {
-    margin:5px;
-    display:inline;
+    margin: 5px;
+    display: inline;
 }
 
 hr {
-    border:1px solid gray;
-    opacity:50%;
+    border: 1px solid gray;
+    opacity: 50%;
 }

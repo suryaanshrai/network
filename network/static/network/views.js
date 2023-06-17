@@ -18,42 +18,42 @@ function getCookie(name) {
     return cookieValue;
 }
 
-function toggle(button){
-    if(button.innerHTML === 'Like') {
+function toggle(button) {
+    if (button.innerHTML === 'Like') {
         button.innerHTML = 'Unlike';
-    }
-    else {
+    } else {
         button.innerHTML = 'Like';
     }
 }
+
 function getAllPosts() {
     fetch("/getAllPosts")
-    .then(response => response.json())
-    .then(data => {
+        .then(response => response.json())
+        .then(data => {
 
-        loadPosts(data);
-        pagination_buttons(data.pagecount, data.page);
-    });
+            loadPosts(data);
+            pagination_buttons(data.pagecount, data.page);
+        });
 }
 
 function loadPage(pageName) {
-    document.querySelectorAll('.pages').forEach((page)=> {
+    document.querySelectorAll('.pages').forEach((page) => {
         page.style.display = 'none';
     });
-    document.querySelector('#'+pageName).style.display = 'block';
+    document.querySelector('#' + pageName).style.display = 'block';
 }
 
 allPosts = document.querySelector('#AllPostsButton');
 
-let followingButton=document.querySelector("#followingButton");
+let followingButton = document.querySelector("#followingButton");
 
-followingButton.onsubmit = ()=> {
+followingButton.onsubmit = () => {
     fetch('/following')
-    .then(response => response.json())
-    .then(data=>{
-        loadPosts(data);
-        pagination_buttons(data.pagecount, data.page);
-    });
+        .then(response => response.json())
+        .then(data => {
+            loadPosts(data);
+            pagination_buttons(data.pagecount, data.page);
+        });
     return false;
 }
 
@@ -62,7 +62,7 @@ function loadPosts(data) {
     document.querySelector("#AllPosts").innerHTML = "";
     var isloggedin = false;
     fetch('/isloggedin').
-    then(response=>response.json()).
+    then(response => response.json()).
     then(x => {
         console.log(x.isloggedin);
         if (x.isloggedin) {
@@ -72,44 +72,44 @@ function loadPosts(data) {
                 let userlink = document.createElement('a');
                 thispost.innerHTML = `<a href="/user/${post.username}"><b>${post.username}</b></a>
                     <i>${post.time}</i> <p>${post.content}</p> <p id="post${post['id']}">Likes: ${post.likecount}</p>`;
-                    let likeForm = document.createElement('form');
+                let likeForm = document.createElement('form');
                 let likeButton = document.createElement('button');
                 likeButton.classList.add('btn', 'btn-primary', 'btn-sm');
-                likeButton.type='submit';
+                likeButton.type = 'submit';
                 likeButton.onclick = () => toggle(likeButton);
                 if (post['liked'] === false) {
-                    likeButton.innerHTML='Like';
-                }
-                else {
-                    likeButton.innerHTML='Unlike';
+                    likeButton.innerHTML = 'Like';
+                } else {
+                    likeButton.innerHTML = 'Unlike';
                 }
                 likeForm.append(likeButton);
 
                 let postid = document.createElement('input');
-                postid.type='hidden';
-                postid.name='id';
-                postid.value=post['id'];
+                postid.type = 'hidden';
+                postid.name = 'id';
+                postid.value = post['id'];
                 likeForm.append(postid);
 
                 const csrftoken = getCookie('csrftoken');
 
                 likeForm.onsubmit = () => {
                     fetch(`likePost/${post.id}`, {
-                        method:"POST",
-                        headers: {'X-CSRFToken':csrftoken}
-                    })
-                    .then(likereponse=>likereponse.json())
-                    .then(likedata => {
-                        console.log(likedata);
-                        document.querySelector(`#post${post.id}`).innerHTML = `Likes: ${likedata.newlikecount}`;
-                    })
+                            method: "POST",
+                            headers: {
+                                'X-CSRFToken': csrftoken
+                            }
+                        })
+                        .then(likereponse => likereponse.json())
+                        .then(likedata => {
+                            console.log(likedata);
+                            document.querySelector(`#post${post.id}`).innerHTML = `Likes: ${likedata.newlikecount}`;
+                        })
                     return false;
                 }
                 thispost.append(likeForm);
                 document.querySelector('#AllPosts').append(thispost);
-                });
-            }
-        else {
+            });
+        } else {
             data.allPosts.forEach(post => {
                 let thispost = document.createElement('div');
                 thispost.classList.add('post');
@@ -117,120 +117,118 @@ function loadPosts(data) {
                 thispost.innerHTML = `<a href="/user/${post.username}"><b>${post.username}</b></a>
                     <i>${post.time}</i> <p>${post.content}</p> Likes: ${post.likecount}`;
                 document.querySelector('#AllPosts').append(thispost);
-                });
+            });
         }
     });
 }
 
 
 function pagination(pageCount) {
-    let mydiv=document.querySelector('#paginatory');
-    for (let i = 1; i <= pageCount && i<=10; i++) {
+    let mydiv = document.querySelector('#paginatory');
+    for (let i = 1; i <= pageCount && i <= 10; i++) {
         let myform = document.createElement('form');
-        myform.onsubmit= ()=> {
+        myform.onsubmit = () => {
             fetch(`getAllPosts?page=${i}`)
-            .then(response => response.json())
-            .then(data => {
+                .then(response => response.json())
+                .then(data => {
 
-            loadPosts(data);
-            pagination_buttons(data.pagecount, data.page);
-            });
+                    loadPosts(data);
+                    pagination_buttons(data.pagecount, data.page);
+                });
             return false;
         }
         let submitbutton = document.createElement('button');
         submitbutton.classList.add('btn', 'btn-outline-secondary', 'btn-sm');
-        submitbutton.type='submit';
-        submitbutton.innerHTML=i;
+        submitbutton.type = 'submit';
+        submitbutton.innerHTML = i;
         myform.append(submitbutton);
         mydiv.append(myform);
     }
 }
 
 function pagination_buttons(pageCount, currentPage) {
-    document.querySelector('#paginatory').innerHTML='';
-    let info=document.createElement('div');
-        info.innerHTML=`Page: ${currentPage}`;
+    document.querySelector('#paginatory').innerHTML = '';
+    let info = document.createElement('div');
+    info.innerHTML = `Page: ${currentPage}`;
 
-        let paginationdiv=document.querySelector('#paginatory');
-        paginationdiv.append(info);
-    if (pageCount==1) {
+    let paginationdiv = document.querySelector('#paginatory');
+    paginationdiv.append(info);
+    if (pageCount == 1) {
         return false;
     }
-    if (pageCount==2) {
-        let myform=document.createElement('form');
-        myform.onsubmit=()=> {
-            let nextpage=1;
-            if(currentPage==1){
-                nextpage=2;
-            }
-            else {
-                nextpage=1;
+    if (pageCount == 2) {
+        let myform = document.createElement('form');
+        myform.onsubmit = () => {
+            let nextpage = 1;
+            if (currentPage == 1) {
+                nextpage = 2;
+            } else {
+                nextpage = 1;
             }
             fetch(`getAllPosts?page=${nextpage}`)
-            .then(response => response.json())
-            .then(data => {
+                .then(response => response.json())
+                .then(data => {
 
-            loadPosts(data);
-            pagination_buttons(data.pagecount, data.page);
-            });
+                    loadPosts(data);
+                    pagination_buttons(data.pagecount, data.page);
+                });
             return false;
         }
-        let nextbutton=document.createElement('button');
-        nextbutton.type='submit';
+        let nextbutton = document.createElement('button');
+        nextbutton.type = 'submit';
         nextbutton.classList.add('btn', 'btn-primary', 'btn-sm');
-        if(currentPage==1){
-            nextbutton.innerHTML='Next';
-        }
-        else {
-            nextbutton.innerHTML='Prev';
+        if (currentPage == 1) {
+            nextbutton.innerHTML = 'Next';
+        } else {
+            nextbutton.innerHTML = 'Prev';
         }
         myform.append(nextbutton);
         document.querySelector('#paginatory').append(myform);
     }
-    if(pageCount>2) {
-        let nextbuttonform=document.createElement('form');
-        let prevbuttonform=document.createElement('form');
+    if (pageCount > 2) {
+        let nextbuttonform = document.createElement('form');
+        let prevbuttonform = document.createElement('form');
 
-        let nextbutton=document.createElement('button');
-        nextbutton.type='submit';
+        let nextbutton = document.createElement('button');
+        nextbutton.type = 'submit';
         nextbutton.classList.add('btn', 'btn-primary', 'btn-sm');
-        nextbutton.innerHTML='Next';
+        nextbutton.innerHTML = 'Next';
         nextbuttonform.append(nextbutton);
 
-        let prevbutton=document.createElement('button');
-        prevbutton.type='submit';
+        let prevbutton = document.createElement('button');
+        prevbutton.type = 'submit';
         prevbutton.classList.add('btn', 'btn-primary', 'btn-sm');
-        prevbutton.innerHTML='Prev';
+        prevbutton.innerHTML = 'Prev';
         prevbuttonform.append(prevbutton);
 
-        nextbuttonform.onsubmit=()=>{
-            currentPage = parseInt(currentPage)+1;
+        nextbuttonform.onsubmit = () => {
+            currentPage = parseInt(currentPage) + 1;
             if (currentPage > pageCount) {
                 currentPage -= 1;
                 return false;
             }
             fetch(`getAllPosts?page=${currentPage}`)
-            .then(response => response.json())
-            .then(data => {
+                .then(response => response.json())
+                .then(data => {
 
-            loadPosts(data);
-            pagination_buttons(data.pagecount, data.page);
-            });
+                    loadPosts(data);
+                    pagination_buttons(data.pagecount, data.page);
+                });
             return false;
         }
-        prevbuttonform.onsubmit=()=>{
-            currentPage = parseInt(currentPage)-1;
+        prevbuttonform.onsubmit = () => {
+            currentPage = parseInt(currentPage) - 1;
             if (currentPage < 1) {
                 currentPage += 1;
                 return false;
             }
             fetch(`getAllPosts?page=${currentPage}`)
-            .then(response => response.json())
-            .then(data => {
+                .then(response => response.json())
+                .then(data => {
 
-            loadPosts(data);
-            pagination_buttons(data.pagecount, data.page);
-            });
+                    loadPosts(data);
+                    pagination_buttons(data.pagecount, data.page);
+                });
             return false;
         }
 
@@ -239,7 +237,3 @@ function pagination_buttons(pageCount, currentPage) {
         paginationdiv.append(nextbuttonform);
     }
 }
-
-// To do next:
-// edit post feature
-// likepost feature
