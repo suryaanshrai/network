@@ -118,6 +118,16 @@ function loadPosts(data) {
                     editText.style.display="block";
                     editSubmit.style.display="block";
                     editButton.style.display="none";
+                    fetch(`/editpost`, {
+                        method: "POST",
+                        headers: {
+                            'X-CSRFToken': csrftoken,
+                        }
+                    })
+                    .then(likereponse => likereponse.json())
+                        .then(likedata => {
+                        console.log(likedata);
+                        })
                 }
                 editButton.classList.add('btn', 'btn-primary', 'btn-sm');
                 editSubmit.classList.add('btn', 'btn-primary', 'btn-sm');
