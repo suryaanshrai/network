@@ -108,10 +108,11 @@ function loadPosts(data) {
                 }
                 thispost.append(likeForm);
 
-                let likeForm = document.createElement('form');
-                let likeButton = document.createElement('button');
-                likeButton.classList.add('btn', 'btn-primary', 'btn-sm');
-                likeButton.type = 'submit';
+                let editForm = document.createElement('form');
+                let editButton = document.createElement('button');
+                let editText = document
+                editButton.classList.add('btn', 'btn-primary', 'btn-sm');
+                editButton.type = 'submit';
                 document.querySelector('#AllPosts').append(thispost);
             });
         } else {
