@@ -13,11 +13,20 @@ function getCookie(name) {
     return cookieValue;
 }
 
+function toggle(button){
+    if(button.innerHTML === 'Like') {
+        button.innerHTML = 'Unlike';
+    }
+    else {
+        button.innerHTML = 'Like';
+    }
+}
+
 function LikePost(id) {
 
     const csrftoken = getCookie('csrftoken');
 
-    fetch(`likePost/${id}`, {
+    fetch(`/likePost/${id}`, {
         method:"POST",
         headers: {'X-CSRFToken':csrftoken}
     })
@@ -25,6 +34,8 @@ function LikePost(id) {
     .then(likedata => {
         console.log(likedata);
         document.querySelector(`#post${id}`).innerHTML = `Likes: ${likedata.newlikecount}`;
+        toggle(document.querySelector(`#${id}button`));
+
     })
     return false;
 }
