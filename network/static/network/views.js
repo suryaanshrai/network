@@ -112,8 +112,10 @@ function loadPosts(data) {
                 let editText = document.createElement('textarea');
                 editButton.classList.add('btn', 'btn-primary', 'btn-sm');
                 editButton.type = 'submit';
+                editForm.append(editText,editButton);
 
-                thispost.append(likeForm, editForm);
+                thispost.append(likeForm);
+                thispost.append(editForm);
                 document.querySelector('#AllPosts').append(thispost);
             });
         } else {
