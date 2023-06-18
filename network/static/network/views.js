@@ -124,7 +124,16 @@ function loadPosts(data) {
                     document.querySelector(`#toHide${post.id}`).style.display="none";
                     likeForm.style.display="none";
                 }
-                editForm.onsubmit= () => {
+
+                editButton.classList.add('btn', 'btn-primary', 'btn-sm');
+                editSubmit.classList.add('btn', 'btn-primary', 'btn-sm');
+                editSubmit.type="submit";
+                editSubmit.style.display="none";
+                editSubmit.innerHTML="Done";
+                editForm.onsubmit=()=>{
+                    return false;
+                }
+                editSubmit.onclick= () => {
                     fetch(`/editpost/${post.id}`, {
                         method:"POST",
                         body: new FormData(editForm),
@@ -144,11 +153,6 @@ function loadPosts(data) {
                     document.querySelector(`#toupdate${post.id}`).innerHTML=editdata.post_content;
                     return false;
                 }
-                editButton.classList.add('btn', 'btn-primary', 'btn-sm');
-                editSubmit.classList.add('btn', 'btn-primary', 'btn-sm');
-                editSubmit.type="submit";
-                editSubmit.style.display="none";
-                editSubmit.innerHTML="Done";
                 editForm.append(editText, editSubmit);
                 edit.append(editButton,editForm);
                 thispost.append(likeForm);
