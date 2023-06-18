@@ -71,7 +71,7 @@ function loadPosts(data) {
                 thispost.classList.add('post');
                 let userlink = document.createElement('a');
                 thispost.innerHTML = `<a href="/user/${post.username}"><b>${post.username}</b></a>
-                    <i>${post.time}</i> <p>${post.content}</p> <p id="post${post['id']}">Likes: ${post.likecount}</p>`;
+                    <i>${post.time}</i> <div id="toHide${post.id}"> <p>${post.content}</p> <p id="post${post['id']}">Likes: ${post.likecount}</p></div>`;
                 let likeForm = document.createElement('form');
                 let likeButton = document.createElement('button');
                 likeButton.classList.add('btn', 'btn-primary', 'btn-sm');
@@ -113,8 +113,6 @@ function loadPosts(data) {
                 let editText = document.createElement('textarea');
                 let editForm = document.createElement('form');
 
-                let toHide = document.createElement('div');
-                toHide.append(thispost)
                 editText.style.display = "none";
                 editText.name="post_content";
                 editButton.innerHTML="Edit";
@@ -123,6 +121,7 @@ function loadPosts(data) {
                     editSubmit.style.display="block";
                     editButton.style.display="none";
                     editText.innerHTML=post.content;
+                    document.querySelector(`#toHide${post.id}`).style.display="none";
                 }
                 editButton.classList.add('btn', 'btn-primary', 'btn-sm');
                 editSubmit.classList.add('btn', 'btn-primary', 'btn-sm');
@@ -131,7 +130,7 @@ function loadPosts(data) {
                 editSubmit.innerHTML="Done";
                 editForm.append(editText, editSubmit);
                 edit.append(editButton,editForm);
-
+                document.querySelector(`#toHide${post.id}`).append(likeForm);
                 thispost.append(likeForm);
                 thispost.append(edit);
                 document.querySelector('#AllPosts').append(thispost);
