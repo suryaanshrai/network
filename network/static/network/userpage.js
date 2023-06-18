@@ -46,5 +46,5 @@ function LikePost(id) {
 }
 
 function editpost(id) {
-    document.querySelector(`toHide${id}`).style.display="none";
+    document.querySelector(`#toHide${id}`).style.display="none";
 }
