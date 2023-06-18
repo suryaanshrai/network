@@ -48,20 +48,20 @@ function LikePost(id) {
 function editpost(id) {
     document.querySelector(`#toHide${id}`).style.display="none";
     document.querySelector(`#editButton${id}`).style.display="none";
-    document.querySelector(`#editText${id}`).style.display="block";
     document.querySelector(`#editForm${id}`).style.display="block";
 }
 
 function editPostSubmit(id) {
-    document.querySelector(`#toHide${id}`).style.display="none";
-    document.querySelector(`#editButton${id}`).style.display="none";
-    document.querySelector(`#editText${id}`).style.display="block";
     fetch(`/editpost/${id}`, {
         method:"POST",
-        body: new FormData(editForm),
+        body: new FormData(document.querySelector(`#editForm${id}`)),
     })
     .then(editresponse => editresponse.json())
     .then(editdata => {
         console.log(editdata);
+        document.querySelector(`#toHide${id}`).style.display="block";
+        document.querySelector(`#editButton${id}`).style.display="block";
+        document.querySelector(`#editForm${id}`).style.display="none";
+        document.querySelector(`#toupdate${id}`).innerHTML=editdata.post_content;
     })
 }
