@@ -56,4 +56,12 @@ function editPostSubmit(id) {
     document.querySelector(`#toHide${id}`).style.display="none";
     document.querySelector(`#editButton${id}`).style.display="none";
     document.querySelector(`#editText${id}`).style.display="block";
+    fetch(`/editpost/${id}`, {
+        method:"POST",
+        body: new FormData(editForm),
+    })
+    .then(editresponse => editresponse.json())
+    .then(editdata => {
+        console.log(editdata);
+    })
 }
