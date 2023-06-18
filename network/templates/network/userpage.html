@@ -39,10 +39,10 @@
                 </div>
                 {% if user.id == post.poster_id %}
                     <button class="btn btn-primary btn-sm" id="editButton{{post.id}}" onclick="editpost({{post.id}})">Edit</button>
-                    <form id="editForm{{post.id}}">
+                    <form id="editForm{{post.id}}" style="display:none">
                         <textarea id="editText{{post.id}}" name="post_content" style="display:none">{{post.content}}</textarea>
                         {% csrf_token %}
-                        <input onclick="editPostSubmit({{post.id}})" type="button" value="Done">
+                        <input class="btn btn-primary btn-sm" onclick="editPostSubmit({{post.id}})" type="button" value="Done">
                     </form>
                 {% endif %}
                 {% endif %}
