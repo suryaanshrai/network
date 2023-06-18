@@ -126,7 +126,7 @@ function loadPosts(data) {
                         }
                     })
                     .then(likeresponse => {
-                        console.log(likeresponse);
+                        console.log(likeresponse.json());
                     })
 
                 }
