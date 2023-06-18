@@ -155,7 +155,10 @@ function loadPosts(data) {
                 editForm.append(editText, editSubmit);
                 edit.append(editButton,editForm);
                 thispost.append(likeForm);
-                thispost.append(edit);
+                let user_id=document.querySelector("#userid").value;
+                if (post.poster_id == user_id) {
+                    thispost.append(edit);
+                }
                 document.querySelector('#AllPosts').append(thispost);
             });
         } else {
