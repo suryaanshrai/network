@@ -124,6 +124,9 @@ function loadPosts(data) {
                     document.querySelector(`#toHide${post.id}`).style.display="none";
                     likeForm.style.display="none";
                 }
+                editForm.onsubmit= () => {
+                    
+                }
                 editButton.classList.add('btn', 'btn-primary', 'btn-sm');
                 editSubmit.classList.add('btn', 'btn-primary', 'btn-sm');
                 editSubmit.type="submit";
