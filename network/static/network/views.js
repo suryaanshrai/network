@@ -125,6 +125,13 @@ function loadPosts(data) {
                     likeForm.style.display="none";
                 }
                 editForm.onsubmit= () => {
+                    fetch(`/editpost/${post.id}`, {
+                        method:"POST",
+                        body: new FormData(editForm).
+                        headers: {
+                            'X-CSRFToken': csrftoken
+                        }
+                    })
                     
                 }
                 editButton.classList.add('btn', 'btn-primary', 'btn-sm');
