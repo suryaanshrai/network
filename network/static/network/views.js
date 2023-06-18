@@ -127,12 +127,15 @@ function loadPosts(data) {
                 editForm.onsubmit= () => {
                     fetch(`/editpost/${post.id}`, {
                         method:"POST",
-                        body: new FormData(editForm).
+                        body: new FormData(editForm), 
                         headers: {
                             'X-CSRFToken': csrftoken
                         }
                     })
-                    
+                    .then(editresponse => editresponse.json())
+                    .then(editdata => {
+                        console.log(editdata);
+                    })
                 }
                 editButton.classList.add('btn', 'btn-primary', 'btn-sm');
                 editSubmit.classList.add('btn', 'btn-primary', 'btn-sm');
