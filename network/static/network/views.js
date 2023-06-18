@@ -130,9 +130,7 @@ function loadPosts(data) {
                 editSubmit.type="submit";
                 editSubmit.style.display="none";
                 editSubmit.innerHTML="Done";
-                editForm.onsubmit=()=>{
-                    return false;
-                }
+                editForm.onSubmit="return false;"
                 editSubmit.onclick= () => {
                     fetch(`/editpost/${post.id}`, {
                         method:"POST",
