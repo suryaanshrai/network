@@ -71,7 +71,7 @@ function loadPosts(data) {
                 thispost.classList.add('post');
                 let userlink = document.createElement('a');
                 thispost.innerHTML = `<a href="/user/${post.username}"><b>${post.username}</b></a>
-                    <i>${post.time}</i> <div id="toHide${post.id}"> <p>${post.content}</p> <p id="post${post['id']}">Likes: ${post.likecount}</p></div>`;
+                    <i>${post.time}</i> <div id="toHide${post.id}"> <p id="toupdate${post.id}">${post.content}</p> <p id="post${post['id']}">Likes: ${post.likecount}</p></div>`;
                 let likeForm = document.createElement('form');
                 let likeButton = document.createElement('button');
                 likeButton.classList.add('btn', 'btn-primary', 'btn-sm');
@@ -127,7 +127,7 @@ function loadPosts(data) {
                 editForm.onsubmit= () => {
                     fetch(`/editpost/${post.id}`, {
                         method:"POST",
-                        body: new FormData(editForm), 
+                        body: new FormData(editForm),
                         headers: {
                             'X-CSRFToken': csrftoken
                         }
@@ -135,7 +135,14 @@ function loadPosts(data) {
                     .then(editresponse => editresponse.json())
                     .then(editdata => {
                         console.log(editdata);
-                    })
+                    });
+                    editText.style.display="none";
+                    editSubmit.style.display="none";
+                    editButton.style.display="block";
+                    document.querySelector(`#toHide${post.id}`).style.display="block";
+                    likeForm.style.display="block";
+                    document.querySelector(`#toupdate${post.id}`).innerHTML=editdata.post_content;
+                    return false;
                 }
                 editButton.classList.add('btn', 'btn-primary', 'btn-sm');
                 editSubmit.classList.add('btn', 'btn-primary', 'btn-sm');
