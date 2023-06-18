@@ -113,24 +113,13 @@ function loadPosts(data) {
                 let editText = document.createElement('textarea');
                 let editForm = document.createElement('form');
                 editText.style.display = "none";
+                editText.name="post_content";
                 editButton.innerHTML="Edit";
                 editButton.onclick=()=> {
                     editText.style.display="block";
                     editSubmit.style.display="block";
                     editButton.style.display="none";
-                    fetch(`/editpost/${post.id}`, {
-                        method: "POST",
-                        headers: {
-                            'X-CSRFToken': csrftoken,
-                            'body': {
-                                "post_content":""
-                            }
-                        }
-                    })
-                    .then(likeresponse => {
-                        console.log(likeresponse.json());
-                    })
-
+                    editText.innerHTML=post.content;
                 }
                 editButton.classList.add('btn', 'btn-primary', 'btn-sm');
                 editSubmit.classList.add('btn', 'btn-primary', 'btn-sm');
