@@ -48,15 +48,16 @@ allPosts = document.querySelector('#AllPostsButton');
 let followingButton = document.querySelector("#followingButton");
 
 if (followingButton != null) {
-followingButton.onsubmit = () => {
-    fetch('/following')
-        .then(response => response.json())
-        .then(data => {
-            loadPosts(data);
-            pagination_buttons(data.pagecount, data.page);
-        });
-    return false;
-}}
+    followingButton.onsubmit = () => {
+        fetch('/following')
+            .then(response => response.json())
+            .then(data => {
+                loadPosts(data);
+                pagination_buttons(data.pagecount, data.page);
+            });
+        return false;
+    }
+}
 
 function loadPosts(data) {
     console.log(data);
@@ -115,48 +116,48 @@ function loadPosts(data) {
                 let editForm = document.createElement('form');
 
                 editText.style.display = "none";
-                editText.name="post_content";
-                editButton.innerHTML="Edit";
-                editButton.onclick=()=> {
-                    editText.style.display="block";
-                    editSubmit.style.display="block";
-                    editButton.style.display="none";
-                    editText.innerHTML=post.content;
-                    document.querySelector(`#toHide${post.id}`).style.display="none";
-                    likeForm.style.display="none";
+                editText.name = "post_content";
+                editButton.innerHTML = "Edit";
+                editButton.onclick = () => {
+                    editText.style.display = "block";
+                    editSubmit.style.display = "block";
+                    editButton.style.display = "none";
+                    editText.innerHTML = post.content;
+                    document.querySelector(`#toHide${post.id}`).style.display = "none";
+                    likeForm.style.display = "none";
                 }
 
                 editButton.classList.add('btn', 'btn-primary', 'btn-sm');
                 editSubmit.classList.add('btn', 'btn-primary', 'btn-sm');
-                editSubmit.style.display="none";
-                editSubmit.innerHTML="Done";
-                editForm.onsubmit=()=> {
+                editSubmit.style.display = "none";
+                editSubmit.innerHTML = "Done";
+                editForm.onsubmit = () => {
                     return false;
                 }
-                editSubmit.onclick= () => {
+                editSubmit.onclick = () => {
                     fetch(`/editpost/${post.id}`, {
-                        method:"POST",
-                        body: new FormData(editForm),
-                        headers: {
-                            'X-CSRFToken': csrftoken
-                        }
-                    })
-                    .then(editresponse => editresponse.json())
-                    .then(editdata => {
-                        console.log(editdata);
-                        document.querySelector(`#toupdate${post.id}`).innerHTML=editdata.post_content;
-                        editText.style.display="none";
-                        editSubmit.style.display="none";
-                        editButton.style.display="block";
-                        document.querySelector(`#toHide${post.id}`).style.display="block";
-                        likeForm.style.display="block";
-                    });
+                            method: "POST",
+                            body: new FormData(editForm),
+                            headers: {
+                                'X-CSRFToken': csrftoken
+                            }
+                        })
+                        .then(editresponse => editresponse.json())
+                        .then(editdata => {
+                            console.log(editdata);
+                            document.querySelector(`#toupdate${post.id}`).innerHTML = editdata.post_content;
+                            editText.style.display = "none";
+                            editSubmit.style.display = "none";
+                            editButton.style.display = "block";
+                            document.querySelector(`#toHide${post.id}`).style.display = "block";
+                            likeForm.style.display = "block";
+                        });
                     return false;
                 }
                 editForm.append(editText, editSubmit);
-                edit.append(editButton,editForm);
+                edit.append(editButton, editForm);
                 thispost.append(likeForm);
-                let user_id=document.querySelector("#userid").value;
+                let user_id = document.querySelector("#userid").value;
                 if (post.poster_id == user_id) {
                     thispost.append(edit);
                 }
