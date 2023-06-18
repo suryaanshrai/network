@@ -122,6 +122,7 @@ function loadPosts(data) {
                     editButton.style.display="none";
                     editText.innerHTML=post.content;
                     document.querySelector(`#toHide${post.id}`).style.display="none";
+                    likeForm.style.display="none";
                 }
                 editButton.classList.add('btn', 'btn-primary', 'btn-sm');
                 editSubmit.classList.add('btn', 'btn-primary', 'btn-sm');
@@ -130,7 +131,6 @@ function loadPosts(data) {
                 editSubmit.innerHTML="Done";
                 editForm.append(editText, editSubmit);
                 edit.append(editButton,editForm);
-                document.querySelector(`#toHide${post.id}`).append(likeForm);
                 thispost.append(likeForm);
                 thispost.append(edit);
                 document.querySelector('#AllPosts').append(thispost);
