@@ -36,9 +36,9 @@
                     </button>
                     <input type="hidden" name="id" value="{{post.id}}">
                 </form>
+                </div>
                 {% if user.id == post.poster_id %}
                     <button class="btn btn-primary btn-sm" onclick="editpost({{post.id}})">Edit</button>
-                    </div>
                 {% endif %}
                 {% endif %}
             </div>
