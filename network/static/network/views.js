@@ -114,6 +114,7 @@ function loadPosts(data) {
                 let editForm = document.createElement('form');
 
                 let toHide = document.createElement('div');
+                toHide.append(thispost)
                 editText.style.display = "none";
                 editText.name="post_content";
                 editButton.innerHTML="Edit";
