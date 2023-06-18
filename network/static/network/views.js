@@ -112,6 +112,8 @@ function loadPosts(data) {
                 let editSubmit = document.createElement('button');
                 let editText = document.createElement('textarea');
                 let editForm = document.createElement('form');
+
+                let toHide = document.createElement('div');
                 editText.style.display = "none";
                 editText.name="post_content";
                 editButton.innerHTML="Edit";
