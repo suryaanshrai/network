@@ -127,10 +127,11 @@ function loadPosts(data) {
 
                 editButton.classList.add('btn', 'btn-primary', 'btn-sm');
                 editSubmit.classList.add('btn', 'btn-primary', 'btn-sm');
-                editSubmit.type="submit";
                 editSubmit.style.display="none";
                 editSubmit.innerHTML="Done";
-                editForm.onSubmit="return false;"
+                editForm.onsubmit=()=> {
+                    return false;
+                }
                 editSubmit.onclick= () => {
                     fetch(`/editpost/${post.id}`, {
                         method:"POST",
@@ -142,13 +143,13 @@ function loadPosts(data) {
                     .then(editresponse => editresponse.json())
                     .then(editdata => {
                         console.log(editdata);
+                        document.querySelector(`#toupdate${post.id}`).innerHTML=editdata.post_content;
+                        editText.style.display="none";
+                        editSubmit.style.display="none";
+                        editButton.style.display="block";
+                        document.querySelector(`#toHide${post.id}`).style.display="block";
+                        likeForm.style.display="block";
                     });
-                    editText.style.display="none";
-                    editSubmit.style.display="none";
-                    editButton.style.display="block";
-                    document.querySelector(`#toHide${post.id}`).style.display="block";
-                    likeForm.style.display="block";
-                    document.querySelector(`#toupdate${post.id}`).innerHTML=editdata.post_content;
                     return false;
                 }
                 editForm.append(editText, editSubmit);
