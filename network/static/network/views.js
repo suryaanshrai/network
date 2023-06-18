@@ -125,10 +125,10 @@ function loadPosts(data) {
                             'post_id':post['id'],
                         }
                     })
-                    .then(likeresponse => likeresponse.json())
-                        .then(likedata => {
-                        console.log(likedata);
-                        })
+                    .then(likeresponse => {
+                        console.log(likeresponse);
+                    })
+
                 }
                 editButton.classList.add('btn', 'btn-primary', 'btn-sm');
                 editSubmit.classList.add('btn', 'btn-primary', 'btn-sm');
