@@ -118,11 +118,13 @@ function loadPosts(data) {
                     editText.style.display="block";
                     editSubmit.style.display="block";
                     editButton.style.display="none";
-                    fetch(`/editpost`, {
+                    fetch(`/editpost/${post.id}`, {
                         method: "POST",
                         headers: {
                             'X-CSRFToken': csrftoken,
-                            'foopost_id':post['id'],InputObj
+                            'body': {
+                                "post_content":""
+                            }
                         }
                     })
                     .then(likeresponse => {

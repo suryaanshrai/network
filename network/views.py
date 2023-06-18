@@ -240,10 +240,9 @@ def isloggedin(request):
 
 
 @login_required
-def editpost(request):
+def editpost(request, id):
     if request.method == "POST":
-        postid = request.POST["foopost_id"]
-        post = Posts.objects.get(id=postid)
+        post = Posts.objects.get(id=id)
         if post.poster != request.user:
             return JsonResponse({
                 "Response":"Inappropriate user",
