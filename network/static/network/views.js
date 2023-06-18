@@ -122,7 +122,7 @@ function loadPosts(data) {
                         method: "POST",
                         headers: {
                             'X-CSRFToken': csrftoken,
-                            'post_id':post['id'],
+                            'foopost_id':post['id'],
                         }
                     })
                     .then(likeresponse => {

@@ -242,7 +242,7 @@ def isloggedin(request):
 @login_required
 def editpost(request):
     if request.method == "POST":
-        postid = request.POST["post_id"]
+        postid = request.POST["foopost_id"]
         post = Posts.objects.get(id=postid)
         if post.poster != request.user:
             return JsonResponse({
@@ -255,5 +255,5 @@ def editpost(request):
         post.save()
         return JsonResponse({"post_content": post_content,})
     return JsonResponse({
-        "Response":"Invalid Request",   
+        "Response":"Invalid Request",
     })
