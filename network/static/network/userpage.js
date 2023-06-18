@@ -47,4 +47,13 @@ function LikePost(id) {
 
 function editpost(id) {
     document.querySelector(`#toHide${id}`).style.display="none";
+    document.querySelector(`#editButton${id}`).style.display="none";
+    document.querySelector(`#editText${id}`).style.display="block";
+    document.querySelector(`#editForm${id}`).style.display="block";
+}
+
+function editPostSubmit(id) {
+    document.querySelector(`#toHide${id}`).style.display="none";
+    document.querySelector(`#editButton${id}`).style.display="none";
+    document.querySelector(`#editText${id}`).style.display="block";
 }
