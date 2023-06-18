@@ -47,6 +47,7 @@ allPosts = document.querySelector('#AllPostsButton');
 
 let followingButton = document.querySelector("#followingButton");
 
+if (followingButton != null) {
 followingButton.onsubmit = () => {
     fetch('/following')
         .then(response => response.json())
@@ -55,7 +56,7 @@ followingButton.onsubmit = () => {
             pagination_buttons(data.pagecount, data.page);
         });
     return false;
-}
+}}
 
 function loadPosts(data) {
     console.log(data);
